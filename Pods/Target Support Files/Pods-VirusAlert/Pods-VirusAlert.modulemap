@@ -1,0 +1,6 @@
+framework module Pods_VirusAlert {
+  umbrella header "Pods-VirusAlert-umbrella.h"
+
+  export *
+  module * { export * }
+}
