@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		593CA78C5B7C08BB93C400CA /* Pods_VirusAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB01A22C3476E66896C97418 /* Pods_VirusAlert.framework */; };
+		C09435C71E66A13F00E2F88E /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09435C61E66A13F00E2F88E /* Auth.storyboard */; };
 		C09A13631E668C0B006B0DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09A13621E668C0B006B0DF4 /* AppDelegate.swift */; };
 		C09A13651E668C0B006B0DF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09A13641E668C0B006B0DF4 /* ViewController.swift */; };
 		C09A13681E668C0B006B0DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09A13661E668C0B006B0DF4 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		151C143CEC1A24378398BFCD /* Pods-VirusAlert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirusAlert.release.xcconfig"; path = "Pods/Target Support Files/Pods-VirusAlert/Pods-VirusAlert.release.xcconfig"; sourceTree = "<group>"; };
 		59A416B35AF4433B780C193D /* Pods-VirusAlert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirusAlert.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VirusAlert/Pods-VirusAlert.debug.xcconfig"; sourceTree = "<group>"; };
+		C09435C61E66A13F00E2F88E /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		C09A135F1E668C0B006B0DF4 /* VirusAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirusAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C09A13621E668C0B006B0DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C09A13641E668C0B006B0DF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +52,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C09435C81E66A14600E2F88E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				C09435C61E66A13F00E2F88E /* Auth.storyboard */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
 		C09A13561E668C0B006B0DF4 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +81,7 @@
 		C09A13611E668C0B006B0DF4 /* VirusAlert */ = {
 			isa = PBXGroup;
 			children = (
+				C09435C81E66A14600E2F88E /* Authentication */,
 				C09A13621E668C0B006B0DF4 /* AppDelegate.swift */,
 				C09A13641E668C0B006B0DF4 /* ViewController.swift */,
 				C09A13661E668C0B006B0DF4 /* Main.storyboard */,
@@ -156,6 +167,7 @@
 			files = (
 				C09A136D1E668C0B006B0DF4 /* LaunchScreen.storyboard in Resources */,
 				DDFD92631E669CA50059E0E6 /* GoogleService-Info.plist in Resources */,
+				C09435C71E66A13F00E2F88E /* Auth.storyboard in Resources */,
 				C09A136A1E668C0B006B0DF4 /* Assets.xcassets in Resources */,
 				C09A13681E668C0B006B0DF4 /* Main.storyboard in Resources */,
 			);
