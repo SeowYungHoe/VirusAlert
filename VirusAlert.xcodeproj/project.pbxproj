@@ -89,6 +89,8 @@
 				C09A136B1E668C0B006B0DF4 /* LaunchScreen.storyboard */,
 				C09A136E1E668C0B006B0DF4 /* Info.plist */,
 				DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */,
+				DDFD92651E66A29C0059E0E6 /* Rock */,
+				DDFD92641E66A2920059E0E6 /* YungHoe */,
 			);
 			path = VirusAlert;
 			sourceTree = "<group>";
@@ -100,6 +102,20 @@
 				151C143CEC1A24378398BFCD /* Pods-VirusAlert.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DDFD92641E66A2920059E0E6 /* YungHoe */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = YungHoe;
+			sourceTree = "<group>";
+		};
+		DDFD92651E66A29C0059E0E6 /* Rock */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Rock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
