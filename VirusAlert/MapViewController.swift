@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  VirusAlert
 //
 //  Created by Seow Yung Hoe on 01/03/2017.
@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+    
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,4 +24,7 @@ class ViewController: UIViewController {
 
 
 }
+
+
+
 
