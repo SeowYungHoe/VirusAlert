@@ -22,6 +22,10 @@
 		C09A136A1E668C0B006B0DF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C09A13691E668C0B006B0DF4 /* Assets.xcassets */; };
 		C09A136D1E668C0B006B0DF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09A136B1E668C0B006B0DF4 /* LaunchScreen.storyboard */; };
 		DDFD92631E669CA50059E0E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */; };
+		DDFD92671E66D8050059E0E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD92661E66D8050059E0E6 /* LoginViewController.swift */; };
+		DDFD92691E66D82F0059E0E6 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDFD92681E66D82F0059E0E6 /* Login.storyboard */; };
+		DDFD926B1E66D8AB0059E0E6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD926A1E66D8AB0059E0E6 /* RegisterViewController.swift */; };
+		DDFD926D1E66E5080059E0E6 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD926C1E66E5080059E0E6 /* PostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +47,10 @@
 		C09A136C1E668C0B006B0DF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C09A136E1E668C0B006B0DF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DDFD92661E66D8050059E0E6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DDFD92681E66D82F0059E0E6 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		DDFD926A1E66D8AB0059E0E6 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		DDFD926C1E66E5080059E0E6 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		FB01A22C3476E66896C97418 /* Pods_VirusAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirusAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -153,6 +161,10 @@
 		DDFD92651E66A29C0059E0E6 /* Rock */ = {
 			isa = PBXGroup;
 			children = (
+				DDFD92661E66D8050059E0E6 /* LoginViewController.swift */,
+				DDFD926A1E66D8AB0059E0E6 /* RegisterViewController.swift */,
+				DDFD926C1E66E5080059E0E6 /* PostViewController.swift */,
+				DDFD92681E66D82F0059E0E6 /* Login.storyboard */,
 			);
 			name = Rock;
 			sourceTree = "<group>";
@@ -223,6 +235,7 @@
 				C05431C31E66E2DA003C7CE7 /* Tips.storyboard in Resources */,
 				C09A136D1E668C0B006B0DF4 /* LaunchScreen.storyboard in Resources */,
 				DDFD92631E669CA50059E0E6 /* GoogleService-Info.plist in Resources */,
+				DDFD92691E66D82F0059E0E6 /* Login.storyboard in Resources */,
 				C09435C71E66A13F00E2F88E /* Auth.storyboard in Resources */,
 				C09A136A1E668C0B006B0DF4 /* Assets.xcassets in Resources */,
 				C05431C81E67C03E003C7CE7 /* Statistics.storyboard in Resources */,
@@ -287,9 +300,12 @@
 			files = (
 				C09A13651E668C0B006B0DF4 /* MapViewController.swift in Sources */,
 				C05431CA1E67C055003C7CE7 /* StatisticsViewController.swift in Sources */,
+				DDFD92671E66D8050059E0E6 /* LoginViewController.swift in Sources */,
 				C09A13631E668C0B006B0DF4 /* AppDelegate.swift in Sources */,
 				C05431C51E66E37D003C7CE7 /* TipsViewController.swift in Sources */,
 				C05431C11E66D32C003C7CE7 /* CustomTabBarController.swift in Sources */,
+				DDFD926B1E66D8AB0059E0E6 /* RegisterViewController.swift in Sources */,
+				DDFD926D1E66E5080059E0E6 /* PostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
