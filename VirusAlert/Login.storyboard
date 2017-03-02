@@ -13,7 +13,7 @@
         <!--Post View Controller-->
         <scene sceneID="AhK-Nm-yC7">
             <objects>
-                <viewController id="L3y-m7-4tE" customClass="PostViewController" customModule="VirusAlert" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostViewController" id="L3y-m7-4tE" customClass="PostViewController" customModule="VirusAlert" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fFx-IJ-ea6"/>
                         <viewControllerLayoutGuide type="bottom" id="9Av-n7-jUA"/>
@@ -29,6 +29,7 @@
                                     <constraint firstAttribute="height" constant="260" id="90r-af-vAC"/>
                                     <constraint firstAttribute="width" constant="240" id="VxR-po-gN4"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elv-2x-wqg">
@@ -90,13 +91,17 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWU-V7-fCN">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="162" y="318" width="50" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="4Vs-qr-Uvo"/>
+                                    <constraint firstAttribute="height" constant="40" id="vHK-7q-3hL"/>
+                                </constraints>
+                                <state key="normal" title="Login"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18m-jP-KzG">
-                                <rect key="frame" x="152" y="607" width="70" height="30"/>
+                                <rect key="frame" x="152" y="597" width="70" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="a3C-uh-kGn"/>
+                                    <constraint firstAttribute="height" constant="40" id="a3C-uh-kGn"/>
                                     <constraint firstAttribute="width" constant="70" id="w20-Cb-ij1"/>
                                 </constraints>
                                 <state key="normal" title="Register"/>
@@ -117,6 +122,10 @@
                             <constraint firstItem="li4-57-6F8" firstAttribute="top" secondItem="lAI-L7-6Cx" secondAttribute="bottom" constant="30" id="t9c-if-jE0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userEmail" destination="lAI-L7-6Cx" id="oCo-2r-1Fj"/>
+                        <outlet property="userPassword" destination="li4-57-6F8" id="XYj-WZ-j4u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Df-rO-SLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -153,8 +162,9 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xrj-5d-SPt">
-                                <rect key="frame" x="152" y="370" width="70" height="30"/>
+                                <rect key="frame" x="152" y="370" width="70" height="40"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7XU-oR-vm8"/>
                                     <constraint firstAttribute="width" constant="70" id="m5a-As-7Lr"/>
                                 </constraints>
                                 <state key="normal" title="Sign Up"/>
