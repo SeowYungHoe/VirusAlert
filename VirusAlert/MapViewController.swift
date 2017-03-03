@@ -11,6 +11,7 @@ import MapKit
 import Alamofire
 import SwiftyJSON
 import CoreLocation
+import FirebaseAuth
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
 
@@ -24,12 +25,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
+    @IBOutlet weak var logoutButton: UIBarButtonItem! {
+        didSet {
+            handleLogout()
+        }
+    }
+
     var locationManager = CLLocationManager()
 //    var isInitialized = false
-
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,7 +102,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 print(error)
             }
         }
+
+    func handleLogout() {
+        do {
+            try FIRAuth.auth()?.signOut()
+        }catch let logoutError {
+            print(logoutError)
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+        
     }
+
+
 
 }
 

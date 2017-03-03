@@ -7,29 +7,65 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
+
+    @IBOutlet weak var userEmail: UITextField!
+    @IBOutlet weak var userPassword: UITextField!
+    @IBOutlet weak var fbsdkLogin: FBSDKLoginButton!
+    @IBOutlet weak var loginButton: UIButton! {
+        didSet {
+            loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        }
+    }
+    @IBOutlet weak var fbsdkButton: FBSDKButton!
+    
+    @IBAction func registerButton(_ sender: UIButton) {
+        guard let controller = storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController else {return}
+        
+        navigationController?.pushViewController(controller, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func login() {
+        FIRAuth.auth()?.signIn(withEmail: userEmail.text!, password: userPassword.text!, completion: { (user, error) in
+            if error != nil {
+                print(error! as NSError)
+                print("successfull log in")
+                return
+            }
+            
+            
+            
+            
+            self.presentPostPage()
+            
+        })
+        
     }
-    */
+    
+    func presentPostPage() {
+        guard let controller = storyboard?.instantiateViewController(withIdentifier: "PostViewController") as? PostViewController else {return}
+        
+        present(controller, animated: true, completion: nil)
+        
+   
+    }
+    
+//    func loadHomePage(){
+//        let virusMapPage = CustomTabBarController()
+//        present(virusMapPage, animated:true, completion: nil)
+//        
+//        //        present(virusMapPage, animated: true, completion: nil)
+//    }
+
+
 
 }

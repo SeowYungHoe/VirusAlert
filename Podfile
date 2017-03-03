@@ -12,6 +12,9 @@ target 'VirusAlert' do
  pod 'Firebase/Storage'
  pod 'Alamofire', '~> 4.4'
  pod 'SwiftyJSON'
+ pod 'FBSDKCoreKit'
+ pod 'FBSDKShareKit'
+ pod 'FBSDKLoginKit'
 
 
 
