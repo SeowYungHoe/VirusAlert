@@ -27,7 +27,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var logoutButton: UIBarButtonItem! {
         didSet {
-            handleLogout()
+            //handleLogout()
         }
     }
 
@@ -102,7 +102,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 print(error)
             }
         }
-
+    }
+        
     func handleLogout() {
         do {
             try FIRAuth.auth()?.signOut()
@@ -114,12 +115,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
     }
 
-
-
 }
-
 //---------------------------------
-
 
 
 
