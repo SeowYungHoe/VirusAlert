@@ -10,5 +10,8 @@ target 'VirusAlert' do
  pod 'Firebase/Auth'  #this is for authentication
  pod 'Firebase/Database' #this is for realtime database
  pod 'Firebase/Storage'
+ pod 'FBSDKCoreKit'
+ pod 'FBSDKShareKit'
+ pod 'FBSDKLoginKit'
 
 end
