@@ -21,6 +21,7 @@
 		C09A13681E668C0B006B0DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09A13661E668C0B006B0DF4 /* Main.storyboard */; };
 		C09A136A1E668C0B006B0DF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C09A13691E668C0B006B0DF4 /* Assets.xcassets */; };
 		C09A136D1E668C0B006B0DF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09A136B1E668C0B006B0DF4 /* LaunchScreen.storyboard */; };
+		C0F0EBB51E67DC77004DCB14 /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F0EBB41E67DC77004DCB14 /* Hospital.swift */; };
 		DDFD92631E669CA50059E0E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */; };
 		DDFD92671E66D8050059E0E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD92661E66D8050059E0E6 /* LoginViewController.swift */; };
 		DDFD92691E66D82F0059E0E6 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDFD92681E66D82F0059E0E6 /* Login.storyboard */; };
@@ -46,6 +47,7 @@
 		C09A13691E668C0B006B0DF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C09A136C1E668C0B006B0DF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C09A136E1E668C0B006B0DF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0F0EBB41E67DC77004DCB14 /* Hospital.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hospital.swift; sourceTree = "<group>"; };
 		DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDFD92661E66D8050059E0E6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DDFD92681E66D82F0059E0E6 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				C05431C01E66D32C003C7CE7 /* CustomTabBarController.swift */,
 				C09435C81E66A14600E2F88E /* Authentication */,
 				C09A13641E668C0B006B0DF4 /* MapViewController.swift */,
+				C0F0EBB41E67DC77004DCB14 /* Hospital.swift */,
 				C09A13661E668C0B006B0DF4 /* Main.storyboard */,
 				C05431C61E66E382003C7CE7 /* Tips - Symptons/Prevention */,
 				C09A13691E668C0B006B0DF4 /* Assets.xcassets */,
@@ -303,6 +306,7 @@
 				DDFD92671E66D8050059E0E6 /* LoginViewController.swift in Sources */,
 				C09A13631E668C0B006B0DF4 /* AppDelegate.swift in Sources */,
 				C05431C51E66E37D003C7CE7 /* TipsViewController.swift in Sources */,
+				C0F0EBB51E67DC77004DCB14 /* Hospital.swift in Sources */,
 				C05431C11E66D32C003C7CE7 /* CustomTabBarController.swift in Sources */,
 				DDFD926B1E66D8AB0059E0E6 /* RegisterViewController.swift in Sources */,
 				DDFD926D1E66E5080059E0E6 /* PostViewController.swift in Sources */,
