@@ -32,6 +32,7 @@ class LoginViewController: UIViewController {
             loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         }
     }
+    
     @IBOutlet weak var fbsdkButton: FBSDKButton!
     
     @IBAction func registerButton(_ sender: UIButton) {

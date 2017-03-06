@@ -11,16 +11,16 @@ import SwiftyJSON
 
 class Hospital {
     
-    static var allHospital : [Hospital] = []
-    var name : String?
+    //static var allHospital : [Hospital] = []
+    var name : String!
     var longitude : Double?
     var latitude : Double?
     
     init(json: JSON) {
     
         name = json["name"].stringValue
-        longitude = json["lng"].doubleValue
-        latitude = json["lat"].doubleValue
+        longitude = json["location"]["lng"].doubleValue
+        latitude = json["location"]["lat"].doubleValue
     }
     
 }
