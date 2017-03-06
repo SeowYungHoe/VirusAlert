@@ -33,7 +33,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBOutlet weak var logoutButton: UIBarButtonItem! {
         didSet {
-            //handleLogout()
+            handleLogout()
         }
     }
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,51 +22,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Address" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDs-wg-NUp">
-                                <rect key="frame" x="68" y="204" width="240" height="260"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xYS-PH-DP6">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="260" id="90r-af-vAC"/>
-                                    <constraint firstAttribute="width" constant="240" id="VxR-po-gN4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elv-2x-wqg">
-                                <rect key="frame" x="66" y="144" width="175" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="175" id="VS3-9D-QHm"/>
-                                    <constraint firstAttribute="height" constant="30" id="ecE-om-6Ts"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XM-4h-Dt7">
-                                <rect key="frame" x="153" y="494" width="70" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="ZAg-Sy-vCc"/>
-                                    <constraint firstAttribute="height" constant="30" id="pyR-Ht-c13"/>
-                                </constraints>
-                                <state key="normal" title="Post"/>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1XM-4h-Dt7" firstAttribute="top" secondItem="vDs-wg-NUp" secondAttribute="bottom" constant="30" id="7fA-Jo-3hX"/>
-                            <constraint firstItem="elv-2x-wqg" firstAttribute="leading" secondItem="Ymf-dy-V1r" secondAttribute="leadingMargin" constant="50" id="N64-Gf-9Yb"/>
-                            <constraint firstItem="1XM-4h-Dt7" firstAttribute="centerX" secondItem="Ymf-dy-V1r" secondAttribute="centerX" id="gva-HM-hs4"/>
-                            <constraint firstItem="elv-2x-wqg" firstAttribute="top" secondItem="fFx-IJ-ea6" secondAttribute="bottom" constant="80" id="rc1-VA-WyK"/>
-                            <constraint firstItem="vDs-wg-NUp" firstAttribute="centerX" secondItem="Ymf-dy-V1r" secondAttribute="centerX" id="tCv-tI-MWL"/>
-                            <constraint firstItem="vDs-wg-NUp" firstAttribute="top" secondItem="elv-2x-wqg" secondAttribute="bottom" constant="30" id="u46-G3-fRq"/>
+                            <constraint firstItem="9Av-n7-jUA" firstAttribute="top" secondItem="xYS-PH-DP6" secondAttribute="bottom" id="Byt-c0-7S3"/>
+                            <constraint firstItem="xYS-PH-DP6" firstAttribute="leading" secondItem="Ymf-dy-V1r" secondAttribute="leading" id="WNe-53-1Bs"/>
+                            <constraint firstItem="xYS-PH-DP6" firstAttribute="top" secondItem="fFx-IJ-ea6" secondAttribute="bottom" id="XHW-4r-3nE"/>
+                            <constraint firstAttribute="trailing" secondItem="xYS-PH-DP6" secondAttribute="trailing" id="rgI-w3-eV7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fOm-mN-vEA"/>
-                    <connections>
-                        <outlet property="inputAddressTextView" destination="vDs-wg-NUp" id="GJs-l7-MgE"/>
-                        <outlet property="postButton" destination="1XM-4h-Dt7" id="RaR-EE-hfO"/>
-                        <outlet property="usernameLabel" destination="elv-2x-wqg" id="b3s-iO-s4b"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4OQ-cS-xkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

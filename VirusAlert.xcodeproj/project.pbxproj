@@ -50,6 +50,7 @@
 		C09A136C1E668C0B006B0DF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C09A136E1E668C0B006B0DF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0F0EBB41E67DC77004DCB14 /* Hospital.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hospital.swift; sourceTree = "<group>"; };
+		DD004F611E69536400AFB7BF /* VirusAlert.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VirusAlert.entitlements; sourceTree = "<group>"; };
 		DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDFD92661E66D8050059E0E6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DDFD92681E66D82F0059E0E6 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -130,6 +131,7 @@
 		C09A13611E668C0B006B0DF4 /* VirusAlert */ = {
 			isa = PBXGroup;
 			children = (
+				DD004F611E69536400AFB7BF /* VirusAlert.entitlements */,
 				C09A13621E668C0B006B0DF4 /* AppDelegate.swift */,
 				C05431C01E66D32C003C7CE7 /* CustomTabBarController.swift */,
 				C09435C81E66A14600E2F88E /* Authentication */,
@@ -212,6 +214,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = N77YP5N6T6;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
