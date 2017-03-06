@@ -25,10 +25,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    @IBOutlet weak var logoutButton: UIBarButtonItem! {
-        didSet {
-            handleLogout()
-        }
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
+    
+    @IBAction func logOutTapped(_ sender: Any) {
+        handleLogout()
     }
 
     var locationManager = CLLocationManager()
@@ -36,7 +36,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         fetchAllHospital()
         
     locationManager.delegate = self

@@ -40,13 +40,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Gbe-W2-GrN">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="CBE-dr-6D7"/>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="CBE-dr-6D7">
+                            <connections>
+                                <action selector="logOutTapped:" destination="BYZ-38-t0r" id="4Yt-dP-Qqz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="currentLocationButtonTapped" destination="iq1-Qy-3eY" id="kyN-EM-tcB"/>
-                        <outlet property="mapView" destination="BjZ-oz-vJM" id="Bpc-Bs-6gq"/>
                         <outlet property="logoutButton" destination="CBE-dr-6D7" id="zrP-2L-Fiq"/>
-                    </connections>                    
+                        <outlet property="mapView" destination="BjZ-oz-vJM" id="Bpc-Bs-6gq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
