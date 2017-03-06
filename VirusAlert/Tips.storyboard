@@ -21,16 +21,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mQ-fe-UMx">
-                                <rect key="frame" x="166" y="134" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="B2r-1G-4ps">
+                                <rect key="frame" x="90" y="30" width="195" height="29"/>
+                                <segments>
+                                    <segment title="Symptoms"/>
+                                    <segment title="Preventions"/>
+                                </segments>
+                                <color key="tintColor" red="0.05799344927072525" green="0.091114215552806854" blue="0.028675243258476257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentedControlChanged:" destination="Pl7-tX-r6j" eventType="valueChanged" id="enk-SM-Vgv"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symptoms of Dengue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icM-TF-Q9a">
+                                <rect key="frame" x="30" y="68" width="315" height="26.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJV-Q3-VPv">
+                                <rect key="frame" x="30" y="104.5" width="315" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="c1c-X7-ZVU"/>
+                                </constraints>
+                                <string key="text">1.High fever
+2.Severe headache
+3.Pain behind the eyes
+4.Sever joint and muscle pain
+5.Fatigue
+6.Nausea
+7.Vomiting
+8.Rash
+9.Mild bleeding (eg., nose/gum bleed or easy bruising)
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="icM-TF-Q9a" firstAttribute="leading" secondItem="5uI-94-l8h" secondAttribute="leading" constant="30" id="M2F-Xp-yto"/>
+                            <constraint firstAttribute="trailing" secondItem="B2r-1G-4ps" secondAttribute="trailing" constant="90" id="NjC-JS-rZC"/>
+                            <constraint firstItem="icM-TF-Q9a" firstAttribute="top" secondItem="B2r-1G-4ps" secondAttribute="bottom" constant="10" id="NlK-Lk-i3O"/>
+                            <constraint firstItem="kJV-Q3-VPv" firstAttribute="top" secondItem="icM-TF-Q9a" secondAttribute="bottom" constant="10" id="ccE-kS-Y87"/>
+                            <constraint firstAttribute="trailing" secondItem="kJV-Q3-VPv" secondAttribute="trailing" constant="30" id="iZT-kA-0Hl"/>
+                            <constraint firstItem="B2r-1G-4ps" firstAttribute="leading" secondItem="5uI-94-l8h" secondAttribute="leading" constant="90" id="iiF-eo-fXw"/>
+                            <constraint firstItem="kJV-Q3-VPv" firstAttribute="leading" secondItem="5uI-94-l8h" secondAttribute="leading" constant="30" id="inD-Zh-8Eh"/>
+                            <constraint firstAttribute="trailing" secondItem="icM-TF-Q9a" secondAttribute="trailing" constant="30" id="q92-s2-Thb"/>
+                            <constraint firstItem="B2r-1G-4ps" firstAttribute="top" secondItem="ckU-Pq-OK5" secondAttribute="bottom" constant="10" id="quh-TL-f5P"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainTextView" destination="kJV-Q3-VPv" id="Yd7-3k-K2D"/>
+                        <outlet property="segmentedControl" destination="B2r-1G-4ps" id="qIn-Vn-qVA"/>
+                        <outlet property="titleLabel" destination="icM-TF-Q9a" id="Kjl-cx-1k1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="luR-gA-rxQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
