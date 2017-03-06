@@ -27,7 +27,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var logoutButton: UIBarButtonItem! {
         didSet {
-            //handleLogout()
+            handleLogout()
         }
     }
 

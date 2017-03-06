@@ -45,12 +45,13 @@ class PostViewController: UIViewController {
 //        
 //    }
     
+    
+    //if user not log in pop up message will appear
     func detectedNotLogIn() {
         let uid = FIRAuth.auth()?.currentUser?.uid
         
-        //detected user not logged in.
         if uid == nil {
-            self.postButton.isEnabled = false
+            //self.postButton.isEnabled = false
             userNotLogInNotification()
             return
         }else {
