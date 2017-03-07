@@ -174,14 +174,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     //-------------------------------------Annotation Related-----------------------------------------------
     
-    
+      
     
     func dengueLocation(){
         
         for location in dengueLatAndLong {
-            let dengueAnnotation = MKPointAnnotation()
+            let dengueAnnotation = CustomPointAnnotation()
             dengueAnnotation.title = location.title
             dengueAnnotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+            dengueAnnotation.image = "mosquito"
             mapView.addAnnotation(dengueAnnotation)
             
             //            hospitalAnnotation.title = location.title
