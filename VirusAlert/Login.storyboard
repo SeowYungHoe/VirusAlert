@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -53,6 +53,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y2K-o1-fvR">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lAI-L7-6Cx">
                                 <rect key="frame" x="16" y="170" width="343" height="30"/>
                                 <nil key="textColor"/>
@@ -66,22 +69,28 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWU-V7-fCN">
-                                <rect key="frame" x="162" y="288" width="50" height="40"/>
+                                <rect key="frame" x="162.5" y="288" width="50" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="4Vs-qr-Uvo"/>
                                     <constraint firstAttribute="height" constant="40" id="vHK-7q-3hL"/>
                                 </constraints>
-                                <state key="normal" title="Login"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18m-jP-KzG">
-                                <rect key="frame" x="159" y="343" width="57" height="30"/>
-                                <state key="normal" title="Register"/>
+                                <rect key="frame" x="156.5" y="343" width="62" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Register">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="registerButton:" destination="GiL-Sc-ak9" eventType="touchUpInside" id="sbQ-QL-MKJ"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Vh-Yj-ze1" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="57" y="388" width="260" height="40"/>
+                                <rect key="frame" x="57.5" y="388" width="260" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="GDl-1q-Ioa"/>
@@ -92,11 +101,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="li4-57-6F8" firstAttribute="top" secondItem="lAI-L7-6Cx" secondAttribute="bottom" constant="30" id="1QX-yb-Ham"/>
+                            <constraint firstItem="Zfl-XN-17D" firstAttribute="top" secondItem="Y2K-o1-fvR" secondAttribute="bottom" id="Gtv-Ub-5ru"/>
                             <constraint firstItem="lAI-L7-6Cx" firstAttribute="top" secondItem="JwN-N3-xE5" secondAttribute="bottom" constant="150" id="Kju-fV-kyj"/>
                             <constraint firstItem="li4-57-6F8" firstAttribute="leading" secondItem="h17-gE-MIh" secondAttribute="leadingMargin" id="Lst-eX-Z9C"/>
                             <constraint firstItem="5Vh-Yj-ze1" firstAttribute="centerX" secondItem="h17-gE-MIh" secondAttribute="centerX" id="Lud-NT-I93"/>
+                            <constraint firstAttribute="trailing" secondItem="Y2K-o1-fvR" secondAttribute="trailing" id="MHs-IB-5jB"/>
                             <constraint firstItem="5Vh-Yj-ze1" firstAttribute="top" secondItem="18m-jP-KzG" secondAttribute="bottom" constant="15" id="MMP-uf-zNg"/>
                             <constraint firstItem="lAI-L7-6Cx" firstAttribute="leading" secondItem="h17-gE-MIh" secondAttribute="leadingMargin" id="PnX-kK-Hck"/>
+                            <constraint firstItem="Y2K-o1-fvR" firstAttribute="leading" secondItem="h17-gE-MIh" secondAttribute="leading" id="Y0a-rd-aag"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lAI-L7-6Cx" secondAttribute="trailing" id="avV-LA-D4N"/>
                             <constraint firstItem="18m-jP-KzG" firstAttribute="centerX" secondItem="h17-gE-MIh" secondAttribute="centerX" id="cTI-6x-AQ4"/>
                             <constraint firstItem="ZWU-V7-fCN" firstAttribute="centerX" secondItem="h17-gE-MIh" secondAttribute="centerX" id="gIl-zm-RkE"/>
@@ -104,10 +116,12 @@
                             <constraint firstItem="18m-jP-KzG" firstAttribute="top" secondItem="ZWU-V7-fCN" secondAttribute="bottom" constant="15" id="i9c-se-KmC"/>
                             <constraint firstItem="ZWU-V7-fCN" firstAttribute="top" secondItem="li4-57-6F8" secondAttribute="bottom" constant="28" id="rpM-w0-rte"/>
                             <constraint firstItem="li4-57-6F8" firstAttribute="top" secondItem="lAI-L7-6Cx" secondAttribute="bottom" constant="30" id="t9c-if-jE0"/>
+                            <constraint firstItem="Y2K-o1-fvR" firstAttribute="top" secondItem="JwN-N3-xE5" secondAttribute="bottom" id="uHx-sY-slz"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="fbsdkLogin" destination="5Vh-Yj-ze1" id="Czw-gX-Msj"/>
+                        <outlet property="gifView" destination="Y2K-o1-fvR" id="03b-xo-xCG"/>
                         <outlet property="loginButton" destination="ZWU-V7-fCN" id="zLr-KM-Ikk"/>
                         <outlet property="userEmail" destination="lAI-L7-6Cx" id="oCo-2r-1Fj"/>
                         <outlet property="userPassword" destination="li4-57-6F8" id="XYj-WZ-j4u"/>
@@ -129,6 +143,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W9c-5E-rse">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I41-H6-fgP">
                                 <rect key="frame" x="16" y="250" width="343" height="30"/>
                                 <nil key="textColor"/>
@@ -148,12 +165,15 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xrj-5d-SPt">
-                                <rect key="frame" x="152" y="370" width="70" height="40"/>
+                                <rect key="frame" x="152.5" y="370" width="70" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7XU-oR-vm8"/>
                                     <constraint firstAttribute="width" constant="70" id="m5a-As-7Lr"/>
                                 </constraints>
-                                <state key="normal" title="Sign Up"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -164,15 +184,20 @@
                             <constraint firstItem="pzt-h5-bjf" firstAttribute="leading" secondItem="VJT-zc-3si" secondAttribute="leadingMargin" id="D10-tH-tYO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="I41-H6-fgP" secondAttribute="trailing" id="IWt-UK-lHr"/>
                             <constraint firstItem="Xrj-5d-SPt" firstAttribute="top" secondItem="lVM-Ev-TEK" secondAttribute="bottom" constant="30" id="O3v-xy-SjX"/>
+                            <constraint firstItem="pr9-6j-fBG" firstAttribute="top" secondItem="W9c-5E-rse" secondAttribute="bottom" id="O9x-T8-1BO"/>
                             <constraint firstItem="I41-H6-fgP" firstAttribute="top" secondItem="pzt-h5-bjf" secondAttribute="bottom" constant="30" id="Qbz-vd-mOF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pzt-h5-bjf" secondAttribute="trailing" id="Tkd-lu-QOL"/>
                             <constraint firstItem="I41-H6-fgP" firstAttribute="top" secondItem="pzt-h5-bjf" secondAttribute="bottom" constant="30" id="V9q-Aj-iHS"/>
+                            <constraint firstItem="W9c-5E-rse" firstAttribute="top" secondItem="bfq-so-RgU" secondAttribute="bottom" id="XJw-DZ-ifd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lVM-Ev-TEK" secondAttribute="trailing" id="YcB-XD-ySB"/>
+                            <constraint firstAttribute="trailing" secondItem="W9c-5E-rse" secondAttribute="trailing" id="bGi-Qp-HP1"/>
                             <constraint firstItem="Xrj-5d-SPt" firstAttribute="centerX" secondItem="VJT-zc-3si" secondAttribute="centerX" id="hbY-87-9ae"/>
                             <constraint firstItem="lVM-Ev-TEK" firstAttribute="leading" secondItem="VJT-zc-3si" secondAttribute="leadingMargin" id="srP-J9-a5n"/>
+                            <constraint firstItem="W9c-5E-rse" firstAttribute="leading" secondItem="VJT-zc-3si" secondAttribute="leading" id="w1I-q7-pV6"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="gifView" destination="W9c-5E-rse" id="bln-py-O6H"/>
                         <outlet property="signUpButton" destination="Xrj-5d-SPt" id="6GH-lA-t9n"/>
                         <outlet property="userNameTextField" destination="pzt-h5-bjf" id="JOu-h9-5zd"/>
                         <outlet property="userRegisterEmailTextField" destination="I41-H6-fgP" id="4Ow-14-6TE"/>

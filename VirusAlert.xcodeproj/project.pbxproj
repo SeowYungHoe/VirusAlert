@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		593CA78C5B7C08BB93C400CA /* Pods_VirusAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB01A22C3476E66896C97418 /* Pods_VirusAlert.framework */; };
 		C00772C11E6D47BD00E579DE /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00772C01E6D47BD00E579DE /* CustomPointAnnotation.swift */; };
+		C01539541E6E7E5300E0E14A /* mosquitobite.gif in Resources */ = {isa = PBXBuildFile; fileRef = C01539531E6E7E5300E0E14A /* mosquitobite.gif */; };
 		C05431BD1E66B058003C7CE7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05431BC1E66B058003C7CE7 /* CoreLocation.framework */; };
 		C05431BF1E66B062003C7CE7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05431BE1E66B062003C7CE7 /* MapKit.framework */; };
 		C05431C11E66D32C003C7CE7 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05431C01E66D32C003C7CE7 /* CustomTabBarController.swift */; };
@@ -22,6 +23,8 @@
 		C09A13681E668C0B006B0DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09A13661E668C0B006B0DF4 /* Main.storyboard */; };
 		C09A136A1E668C0B006B0DF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C09A13691E668C0B006B0DF4 /* Assets.xcassets */; };
 		C09A136D1E668C0B006B0DF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09A136B1E668C0B006B0DF4 /* LaunchScreen.storyboard */; };
+		C0BA2AF91E6E6DA60019AF35 /* GifImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BA2AF81E6E6DA60019AF35 /* GifImageExtension.swift */; };
+		C0BA2AFB1E6E6F150019AF35 /* dna.gif in Resources */ = {isa = PBXBuildFile; fileRef = C0BA2AFA1E6E6F150019AF35 /* dna.gif */; };
 		C0F0EBB51E67DC77004DCB14 /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F0EBB41E67DC77004DCB14 /* Hospital.swift */; };
 		DDFD92631E669CA50059E0E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */; };
 		DDFD92671E66D8050059E0E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD92661E66D8050059E0E6 /* LoginViewController.swift */; };
@@ -34,6 +37,7 @@
 		151C143CEC1A24378398BFCD /* Pods-VirusAlert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirusAlert.release.xcconfig"; path = "Pods/Target Support Files/Pods-VirusAlert/Pods-VirusAlert.release.xcconfig"; sourceTree = "<group>"; };
 		59A416B35AF4433B780C193D /* Pods-VirusAlert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirusAlert.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VirusAlert/Pods-VirusAlert.debug.xcconfig"; sourceTree = "<group>"; };
 		C00772C01E6D47BD00E579DE /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
+		C01539531E6E7E5300E0E14A /* mosquitobite.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = mosquitobite.gif; sourceTree = "<group>"; };
 		C05431BC1E66B058003C7CE7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C05431BE1E66B062003C7CE7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C05431C01E66D32C003C7CE7 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 		C09A13691E668C0B006B0DF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C09A136C1E668C0B006B0DF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C09A136E1E668C0B006B0DF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0BA2AF81E6E6DA60019AF35 /* GifImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifImageExtension.swift; sourceTree = "<group>"; };
+		C0BA2AFA1E6E6F150019AF35 /* dna.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dna.gif; sourceTree = "<group>"; };
 		C0F0EBB41E67DC77004DCB14 /* Hospital.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hospital.swift; sourceTree = "<group>"; };
 		DD004F611E69536400AFB7BF /* VirusAlert.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VirusAlert.entitlements; sourceTree = "<group>"; };
 		DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -88,6 +94,7 @@
 			children = (
 				C05431C21E66E2DA003C7CE7 /* Tips.storyboard */,
 				C05431C41E66E37D003C7CE7 /* TipsViewController.swift */,
+				C01539531E6E7E5300E0E14A /* mosquitobite.gif */,
 				C05431CB1E67C05A003C7CE7 /* Statistics */,
 			);
 			name = "Tips - Symptons/Prevention";
@@ -169,7 +176,9 @@
 		DDFD92651E66A29C0059E0E6 /* Rock */ = {
 			isa = PBXGroup;
 			children = (
+				C0BA2AFA1E6E6F150019AF35 /* dna.gif */,
 				DDFD92661E66D8050059E0E6 /* LoginViewController.swift */,
+				C0BA2AF81E6E6DA60019AF35 /* GifImageExtension.swift */,
 				DDFD926A1E66D8AB0059E0E6 /* RegisterViewController.swift */,
 				DDFD926C1E66E5080059E0E6 /* PostViewController.swift */,
 				DDFD92681E66D82F0059E0E6 /* Login.storyboard */,
@@ -245,12 +254,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0BA2AFB1E6E6F150019AF35 /* dna.gif in Resources */,
 				C05431C31E66E2DA003C7CE7 /* Tips.storyboard in Resources */,
 				C09A136D1E668C0B006B0DF4 /* LaunchScreen.storyboard in Resources */,
 				DDFD92631E669CA50059E0E6 /* GoogleService-Info.plist in Resources */,
 				DDFD92691E66D82F0059E0E6 /* Login.storyboard in Resources */,
 				C09435C71E66A13F00E2F88E /* Auth.storyboard in Resources */,
 				C09A136A1E668C0B006B0DF4 /* Assets.xcassets in Resources */,
+				C01539541E6E7E5300E0E14A /* mosquitobite.gif in Resources */,
 				C05431C81E67C03E003C7CE7 /* Statistics.storyboard in Resources */,
 				C09A13681E668C0B006B0DF4 /* Main.storyboard in Resources */,
 			);
@@ -319,6 +330,7 @@
 				C0F0EBB51E67DC77004DCB14 /* Hospital.swift in Sources */,
 				C00772C11E6D47BD00E579DE /* CustomPointAnnotation.swift in Sources */,
 				C05431C11E66D32C003C7CE7 /* CustomTabBarController.swift in Sources */,
+				C0BA2AF91E6E6DA60019AF35 /* GifImageExtension.swift in Sources */,
 				DDFD926B1E66D8AB0059E0E6 /* RegisterViewController.swift in Sources */,
 				DDFD926D1E66E5080059E0E6 /* PostViewController.swift in Sources */,
 			);

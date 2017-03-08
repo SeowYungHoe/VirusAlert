@@ -15,6 +15,7 @@ class RegisterViewController: UIViewController {
     
     var dbRef : FIRDatabaseReference!
     
+    @IBOutlet weak var gifView: UIImageView!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var userRegisterEmailTextField: UITextField!
     @IBOutlet weak var userRegisterPassTextField: UITextField!
@@ -26,6 +27,8 @@ class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+          gifView.loadGif(name: "dna")
     }
     
     func handleSignUp() {

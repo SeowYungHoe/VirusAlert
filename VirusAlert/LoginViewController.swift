@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
 
     var FIRef : FIRDatabaseReference!
     
+    @IBOutlet weak var gifView: UIImageView!
     @IBOutlet weak var userEmail: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     @IBOutlet weak var fbsdkLogin: FBSDKLoginButton!{
@@ -45,7 +46,9 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         FIRef = FIRDatabase.database().reference()
-
+        
+        gifView.loadGif(name: "dna")
+        
     }
     
     func login() {
