@@ -26,6 +26,8 @@
 		C0BA2AF91E6E6DA60019AF35 /* GifImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BA2AF81E6E6DA60019AF35 /* GifImageExtension.swift */; };
 		C0BA2AFB1E6E6F150019AF35 /* dna.gif in Resources */ = {isa = PBXBuildFile; fileRef = C0BA2AFA1E6E6F150019AF35 /* dna.gif */; };
 		C0F0EBB51E67DC77004DCB14 /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F0EBB41E67DC77004DCB14 /* Hospital.swift */; };
+		DD0483FE1E6E6B0F005E069B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0483FD1E6E6B0F005E069B /* SWRevealViewController.m */; };
+		DD04840A1E6ECE73005E069B /* TableViewResultDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0484091E6ECE73005E069B /* TableViewResultDisplay.swift */; };
 		DDFD92631E669CA50059E0E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */; };
 		DDFD92671E66D8050059E0E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD92661E66D8050059E0E6 /* LoginViewController.swift */; };
 		DDFD92691E66D82F0059E0E6 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDFD92681E66D82F0059E0E6 /* Login.storyboard */; };
@@ -57,6 +59,10 @@
 		C0BA2AFA1E6E6F150019AF35 /* dna.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dna.gif; sourceTree = "<group>"; };
 		C0F0EBB41E67DC77004DCB14 /* Hospital.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hospital.swift; sourceTree = "<group>"; };
 		DD004F611E69536400AFB7BF /* VirusAlert.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VirusAlert.entitlements; sourceTree = "<group>"; };
+		DD0483FB1E6E6B0E005E069B /* VirusAlert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VirusAlert-Bridging-Header.h"; sourceTree = "<group>"; };
+		DD0483FC1E6E6B0F005E069B /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		DD0483FD1E6E6B0F005E069B /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		DD0484091E6ECE73005E069B /* TableViewResultDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewResultDisplay.swift; sourceTree = "<group>"; };
 		DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDFD92661E66D8050059E0E6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DDFD92681E66D82F0059E0E6 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -145,7 +151,11 @@
 				C09A13641E668C0B006B0DF4 /* MapViewController.swift */,
 				C00772C01E6D47BD00E579DE /* CustomPointAnnotation.swift */,
 				C0F0EBB41E67DC77004DCB14 /* Hospital.swift */,
+				DD0484091E6ECE73005E069B /* TableViewResultDisplay.swift */,
 				C09A13661E668C0B006B0DF4 /* Main.storyboard */,
+				DD0483FC1E6E6B0F005E069B /* SWRevealViewController.h */,
+				DD0483FD1E6E6B0F005E069B /* SWRevealViewController.m */,
+				DD0483FB1E6E6B0E005E069B /* VirusAlert-Bridging-Header.h */,
 				C05431C61E66E382003C7CE7 /* Tips - Symptons/Prevention */,
 				C09A13691E668C0B006B0DF4 /* Assets.xcassets */,
 				C09A136B1E668C0B006B0DF4 /* LaunchScreen.storyboard */,
@@ -222,6 +232,7 @@
 					C09A135E1E668C0B006B0DF4 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = N77YP5N6T6;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -329,7 +340,9 @@
 				C05431C51E66E37D003C7CE7 /* TipsViewController.swift in Sources */,
 				C0F0EBB51E67DC77004DCB14 /* Hospital.swift in Sources */,
 				C00772C11E6D47BD00E579DE /* CustomPointAnnotation.swift in Sources */,
+				DD04840A1E6ECE73005E069B /* TableViewResultDisplay.swift in Sources */,
 				C05431C11E66D32C003C7CE7 /* CustomTabBarController.swift in Sources */,
+				DD0483FE1E6E6B0F005E069B /* SWRevealViewController.m in Sources */,
 				C0BA2AF91E6E6DA60019AF35 /* GifImageExtension.swift in Sources */,
 				DDFD926B1E66D8AB0059E0E6 /* RegisterViewController.swift in Sources */,
 				DDFD926D1E66E5080059E0E6 /* PostViewController.swift in Sources */,
@@ -454,11 +467,14 @@
 			baseConfigurationReference = 59A416B35AF4433B780C193D /* Pods-VirusAlert.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = N77YP5N6T6;
 				INFOPLIST_FILE = VirusAlert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.crazy.VirusAlert;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VirusAlert/VirusAlert-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -468,11 +484,13 @@
 			baseConfigurationReference = 151C143CEC1A24378398BFCD /* Pods-VirusAlert.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = N77YP5N6T6;
 				INFOPLIST_FILE = VirusAlert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.crazy.VirusAlert;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VirusAlert/VirusAlert-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
