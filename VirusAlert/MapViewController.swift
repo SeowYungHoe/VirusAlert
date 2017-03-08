@@ -13,6 +13,10 @@ import SwiftyJSON
 import CoreLocation
 import FirebaseAuth
 
+protocol HandleMapSearch {
+     func dropPinZoomIn(placemark: MKPlacemark)
+}
+
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     struct Location {
@@ -21,7 +25,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let longitude: Double
     }
     
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!{
+        didSet{
+         
+        }
+    }
     
     @IBOutlet weak var currentLocationButtonTapped: UIButton!{
         didSet{
@@ -50,11 +58,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     var locationManager = CLLocationManager()
+    
+    //rock's
+    var resultSearchController:UISearchController? = nil
+    
+    var selectedPin : MKPlacemark? = nil
     //    var isInitialized = false
     var hospitalLocation : [Hospital] = []
     
+    
+    @IBOutlet weak var openButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        openButton.target = self.revealViewController()
+        openButton.action = Selector("revealToggle:")
         
         fetchAllHospital()
         dengueLocation()
@@ -63,6 +82,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        //----------------------rock's start-----------------------
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "TableViewResultDisplay") as! TableViewResultDisplay
+        
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
+        
+        //resultSearchController?.delegate = self
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        navigationItem.titleView = resultSearchController?.searchBar
+        
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        
+        locationSearchTable.mapView = mapView
+        locationSearchTable.handleMapSearchDelegate = self
+
+        //------------------------rock's end----------------------
+        
         
         mapView.delegate = self
         mapView.showsUserLocation = true
@@ -91,6 +132,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     }
     
+    //------------------------rock's start---------------------------
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse{
+            locationManager.requestLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error:: (error)")
+    }
+    //-------------------------rock's end-----------------------------
     
     
     func getCurrentLocation(){
@@ -225,4 +277,39 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //------------------------------------------TESTING ZONE----------------------------------------------
 
 
+//-----------------------rock's function's zone-----------------------
+extension MapViewController : HandleMapSearch {
+    func dropPinZoomIn(placemark: MKPlacemark) {
+        //cache the pin
+        selectedPin = placemark
+        //clear existing pins on the map. this feature ensure dealing with ONE ANNOTATION PIN ON THE MAP AT A TIME.
+        
+        //--------below code are to remove all annotation--------
+        //mapView.removeAnnotations(mapView.annotations)
+        
+        //MKPointAnnotation contains coordinate, title and subtitle, has similar information like coordinates and address info
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea {
+            annotation.subtitle = "(city)(state)"
+        }
+        
+        //--------below is to add annotation on the map search--------------
+        //mapView.addAnnotation(annotation)
+        
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        //this allows map to zoom to the coordinate
+        mapView.setRegion(region, animated: true)
+    }
+}
+
+//-----------------------rock's function's end------------------------
+//extension MapViewController : UISearchControllerDelegate {
+//    func presentSearchController(_ searchController: UISearchController) {
+//        
+//    }
+//}
 
