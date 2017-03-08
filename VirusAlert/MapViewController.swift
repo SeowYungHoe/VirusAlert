@@ -131,6 +131,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if switchAnnotationHospital.isOn == true {
             fetchAllHospital()
         }else{
+            switchAnnotationHospital.tintColor = UIColor.red
             self.mapView.removeAnnotations(hospitalAnnotationArray)
         }
       
