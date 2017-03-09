@@ -139,7 +139,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     //---------------------------------------- LOCATIONS ------------------------------------------------
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
                 if !isInitialized {
@@ -147,9 +147,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 isInitialized = true
         
 //        let location = self.locationManager.location!
-        let location = locations[0]
+        let location = locations.last
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        currentLocationCoordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        currentLocationCoordinate = CLLocationCoordinate2DMake((location?.coordinate.latitude)!, (location?.coordinate.longitude)!)
         let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
         mapView.setRegion(region, animated: true)
 //        self.mapView.showsUserLocation = true

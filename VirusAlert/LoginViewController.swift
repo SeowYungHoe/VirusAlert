@@ -68,7 +68,24 @@ class LoginViewController: UIViewController {
     func presentPostPage() {
         guard let controller = storyboard?.instantiateViewController(withIdentifier: "PostViewController") as? PostViewController else {return}
         
-        present(controller, animated: true, completion: nil)
+        let  _ = navigationController?.popViewController(animated: false)
+        //navigationController?.pushViewController(controller, animated: true)
+        
+        //present(controller, animated: true, completion: nil)
+    }
+    
+    //this function is to display is user using facebook to log in or email to log in
+    func displayUserLogInWith() {
+        if let providerData = FIRAuth.auth()?.currentUser?.providerData {
+            for userInfo in providerData {
+                switch userInfo.providerID {
+                case "facebook.com":
+                    print("user is signed in with facebook")
+                default:
+                    print("user is signed in with \(userInfo.providerID)")
+                }
+            }
+        }
     }
     
 }
