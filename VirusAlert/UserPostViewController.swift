@@ -65,7 +65,7 @@ class UserPostViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
         let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
         
-        navigationController?.popViewController(animated: true)
+        navigationController?.pushViewController(controller, animated: true)
         }
     
     func handleLogout() {
