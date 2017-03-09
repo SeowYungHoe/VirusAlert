@@ -52,26 +52,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     
-    
-    var dengueLatAndLong = [
-        Location(latitude: 3.135, longitude: 101.63),
-        Location(latitude: 3.1308, longitude: 101.627)
-    ]
-    
-
+    //---------------------------------- Constant And Variables -----------------------------
     var hospitalAnnotationArray: [MKAnnotation] = []
-
-    
-    
     var locationManager = CLLocationManager()
-    
     //rock's
     var resultSearchController:UISearchController? = nil
     
     var selectedPin : MKPlacemark? = nil
     var isInitialized = false
     var hospitalLocation : [Hospital] = []
-    
+  //-----------------------------------------------------------------------------------------
     
     @IBOutlet weak var openButton: UIBarButtonItem!
     
@@ -114,7 +104,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.delegate = self
         mapView.showsUserLocation = true
 
-        
+        let location = self.locationManager.location?.coordinate
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        currentLocationCoordinate = CLLocationCoordinate2DMake(location!.latitude, location!.longitude)
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
+        mapView.setRegion(region, animated: true)
         
         
     }
@@ -122,7 +116,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        mapView.showsUserLocation = true
+
     }
     
     
@@ -142,22 +141,36 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-                if !isInitialized {
-        
-                isInitialized = true
+//                if !isInitialized {
+//        
+//                isInitialized = true
         
 //        let location = self.locationManager.location!
-        let location = locations[0]
+//        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        
+        let location = locations.last
+        currentLocationCoordinate = CLLocationCoordinate2DMake((location?.coordinate.latitude)!, (location?.coordinate.longitude)!)
+        self.mapView.showsUserLocation = true
+
+        
+//        let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
+//        mapView.setRegion(region, animated: true)
+//        locationManager.stopUpdatingLocation()
+//        dengueLocation()
+//        }
+        
+    }
+    
+    
+
+    
+    func getCurrentLocation(){
+        
+        let location = self.locationManager.location?.coordinate
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        currentLocationCoordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        currentLocationCoordinate = CLLocationCoordinate2DMake(location!.latitude, location!.longitude)
         let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
         mapView.setRegion(region, animated: true)
-//        self.mapView.showsUserLocation = true
-//        locationManager.stopUpdatingLocation()
-        
-        dengueLocation()
-        // here fetch
-        }
         
     }
     
@@ -174,15 +187,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     //-------------------------rock's end-----------------------------
     
     
-    func getCurrentLocation(){
-        
-        let location = self.locationManager.location?.coordinate
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        currentLocationCoordinate = CLLocationCoordinate2DMake(location!.latitude, location!.longitude)
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
-        mapView.setRegion(region, animated: true)
-        
-    }
+
     
     //------------------------------------- FETCHING INFORMATION ------------------------------------
     
@@ -263,23 +268,37 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         for location in dengueLatAndLong {
             let dengueAnnotation = CustomPointAnnotation()
-//            dengueAnnotation.title = location.title
             dengueAnnotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
             dengueAnnotation.image = "mosquito"
             
+            
+
+
             let dengueLoc = CLLocation(latitude: location.latitude, longitude: location.longitude)
+            let loc = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+            
+            let location = self.locationManager.location?.coordinate
+            var myLocation = CLLocation(latitude: (location?.latitude)!, longitude: (location?.longitude)!)
+            var distanceFromDengue = myLocation.distance(from: dengueLoc)
+            dengueAnnotation.title = "\(distanceFromDengue.roundTo(places: 2))Meter Away"
+            self.mapView.addAnnotation(dengueAnnotation)
+            self.mapView.add(MKCircle(center: loc, radius: 150))
+            
+            
 
 
-            if let currentLocation = currentLocationCoordinate {
-                
-                
-                var myLocation = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
-                var distanceFromDengue = myLocation.distance(from: dengueLoc) / 1000
-                
-                dengueAnnotation.title = "Distance from dengue (in KM):\(distanceFromDengue)KM"
-
-                mapView.addAnnotation(dengueAnnotation)
-            }
+//            if let currentLocation = currentLocationCoordinate {
+//
+//                
+//                var myLocation = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+//                var distanceFromDengue = myLocation.distance(from: dengueLoc)
+//                
+//                dengueAnnotation.title = "\(distanceFromDengue.roundTo(places: 2))Meter Away"
+//
+//                self.mapView.addAnnotation(dengueAnnotation)
+////                mapView.layer.cornerRadius = 10.0
+//                self.mapView.add(MKCircle(center: loc, radius: 150))
+//            }
             
         }
         
@@ -313,12 +332,31 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     }
     
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+
+        if let overlay = overlay as? MKCircle {
+            let circleRenderer = MKCircleRenderer(circle: overlay)
+            circleRenderer.fillColor = UIColor.red
+            circleRenderer.alpha = 0.1
+            return circleRenderer
+        }
+        else {
+            return MKOverlayRenderer(overlay: overlay)
+        }
     }
+    
+    
+    
+    //------------------------------Dengue Longitude and Latitude------------------------------------
+    var dengueLatAndLong = [
+        Location(latitude: 3.135, longitude: 101.63),
+        Location(latitude: 3.1308, longitude: 101.627),
+        Location(latitude: 3.145733, longitude: 101.688906)
+    ]
+}
 
-//------------------------------------------TESTING ZONE----------------------------------------------
 
-
-//-----------------------rock's function's zone-----------------------
+//-------------------------rock's function's zone-------------------------
 extension MapViewController : HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark) {
         //cache the pin
@@ -347,12 +385,24 @@ extension MapViewController : HandleMapSearch {
     }
 }
 
+extension Double {
+    /// Rounds the double to decimal places value
+    func roundTo(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}
+
 //-----------------------rock's function's end------------------------
 //extension MapViewController : UISearchControllerDelegate {
 //    func presentSearchController(_ searchController: UISearchController) {
-//        
+//
 //    }
 //}
+
+
+
+//------------------------------------------TESTING ZONE----------------------------------------------
 
 //                        for hospital in self.hospitalLocation{
 //                            let hospAnnotation = MKPointAnnotation()
@@ -366,3 +416,6 @@ extension MapViewController : HandleMapSearch {
 //
 //
 //                        }
+
+
+

@@ -16,7 +16,6 @@
 		C05431C31E66E2DA003C7CE7 /* Tips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05431C21E66E2DA003C7CE7 /* Tips.storyboard */; };
 		C05431C51E66E37D003C7CE7 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05431C41E66E37D003C7CE7 /* TipsViewController.swift */; };
 		C05431C81E67C03E003C7CE7 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05431C71E67C03E003C7CE7 /* Statistics.storyboard */; };
-		C05431CA1E67C055003C7CE7 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05431C91E67C055003C7CE7 /* StatisticsViewController.swift */; };
 		C09435C71E66A13F00E2F88E /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09435C61E66A13F00E2F88E /* Auth.storyboard */; };
 		C09A13631E668C0B006B0DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09A13621E668C0B006B0DF4 /* AppDelegate.swift */; };
 		C09A13651E668C0B006B0DF4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09A13641E668C0B006B0DF4 /* MapViewController.swift */; };
@@ -46,7 +45,6 @@
 		C05431C21E66E2DA003C7CE7 /* Tips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tips.storyboard; sourceTree = "<group>"; };
 		C05431C41E66E37D003C7CE7 /* TipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
 		C05431C71E67C03E003C7CE7 /* Statistics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
-		C05431C91E67C055003C7CE7 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		C09435C61E66A13F00E2F88E /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		C09A135F1E668C0B006B0DF4 /* VirusAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirusAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C09A13621E668C0B006B0DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				C05431C71E67C03E003C7CE7 /* Statistics.storyboard */,
-				C05431C91E67C055003C7CE7 /* StatisticsViewController.swift */,
 			);
 			name = Statistics;
 			sourceTree = "<group>";
@@ -334,7 +331,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C09A13651E668C0B006B0DF4 /* MapViewController.swift in Sources */,
-				C05431CA1E67C055003C7CE7 /* StatisticsViewController.swift in Sources */,
 				DDFD92671E66D8050059E0E6 /* LoginViewController.swift in Sources */,
 				C09A13631E668C0B006B0DF4 /* AppDelegate.swift in Sources */,
 				C05431C51E66E37D003C7CE7 /* TipsViewController.swift in Sources */,
