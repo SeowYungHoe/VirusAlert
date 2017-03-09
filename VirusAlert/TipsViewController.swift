@@ -10,48 +10,230 @@ import UIKit
 
 class TipsViewController: UIViewController {
 
+    var count = 0
+  
+    //-------------------Outlets-----------------
+    @IBOutlet weak var tickBoxOne: UIButton!
+    @IBOutlet weak var tickBoxTwo: UIButton!
+    @IBOutlet weak var tickBoxThree: UIButton!
+    @IBOutlet weak var tickBoxFour: UIButton!
+    @IBOutlet weak var tickBoxFive: UIButton!
+    @IBOutlet weak var tickBoxSix: UIButton!
+    @IBOutlet weak var tickBoxSeven: UIButton!
+    @IBOutlet weak var tickBoxEight: UIButton!
+    @IBOutlet weak var tickBoxNine: UIButton!
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var resultLabel: UILabel!
+
+    @IBOutlet weak var resultButton: UIButton!{
+        didSet{
+                resultButton.addTarget(self, action: #selector(countTotal), for: .touchUpInside)
+        }
+    }
     
-    
-    @IBAction func segmentedControlChanged(_ sender: Any) {
+    //-----------------Actions-------------------
+    @IBAction func boxOneAction(_ sender: UIButton) {
+        if IsBoxClicked1 == true {
+            count -= 1
+            IsBoxClicked1 = false
+        }else{
+            count += 1
+            IsBoxClicked1 = true
+        }
         
-        switch segmentedControl.selectedSegmentIndex {
-            
-     //--------------Symptoms--------------
-        case 0: titleLabel.text = "Symptoms of Dengue";
-            mainTextLabel.text = "1.High fever\n2.Severe headache\n3.Pain behind the eyes\n4.Sever joint and muscle pain\n5.Fatigue\n6.Nausea\n7.Vomiting\n8.Rash\n9.Mild bleeding (eg., nose/gum bleed or easy bruising)";
-        imageView.loadGif(name: "mosquitobite");
-
-            
-     //--------------Preventions-----------
-        case 1: titleLabel.text = "Tips to prevent dengue";
-        mainTextLabel.text = "1.Replace water tray regularly \n2.Dicard unwanted cups and bottles, which collect rain water and breed mosquito, into litterbins\n3.Remove water from flowerpot plates on alternate days\n4.Remove stagnant water collected on leaves, tree branches and in drains\n5.Turn over all water storage containers and keep them dry";
-        imageView.loadGif(name: "mosquitobite");
-
-            
-        default: titleLabel.text = nil
-        mainTextLabel.text = nil
-            
-            
+        if IsBoxClicked1 == true {
+            tickBoxOne.setImage(boxOn, for: UIControlState.normal)
+        }else {
+            tickBoxOne.setImage(boxOff, for: UIControlState.normal)
+        }
+    }
+    
+    @IBAction func boxTwoAction(_ sender: UIButton) {
+        if IsBoxClicked2 == true {
+            count -= 1
+            IsBoxClicked2 = false
+        }else{
+            count += 1
+            IsBoxClicked2 = true
+        }
+        
+        if IsBoxClicked2 == true {
+            tickBoxTwo.setImage(boxOn, for: UIControlState.normal)
+        }else {
+            tickBoxTwo.setImage(boxOff, for: UIControlState.normal)
+        }
+    }
+    
+    @IBAction func boxThreeAction(_ sender: UIButton) {
+        if IsBoxClicked3 == true {
+            IsBoxClicked3 = false
+            count -= 1
+        }else{
+            IsBoxClicked3 = true
+            count += 1
+        }
+        
+        if IsBoxClicked3 == true {
+            tickBoxThree.setImage(boxOn, for: UIControlState.normal)
+        }else {
+            tickBoxThree.setImage(boxOff, for: UIControlState.normal)
+        }
+    }
+    
+    @IBAction func boxFourAction(_ sender: UIButton) {
+        if IsBoxClicked4 == true {
+            IsBoxClicked4 = false
+            count -= 1
+        }else{
+            IsBoxClicked4 = true
+            count += 1
+        }
+        
+        if IsBoxClicked4 == true {
+            tickBoxFour.setImage(boxOn, for: UIControlState.normal)
+        }else {
+            tickBoxFour.setImage(boxOff, for: UIControlState.normal)
+        }
+    }
+    
+    @IBAction func boxFiveAction(_ sender: UIButton) {
+        if IsBoxClicked5 == true {
+            IsBoxClicked5 = false
+            count -= 1
+        }else{
+            IsBoxClicked5 = true
+            count += 1
+        }
+        
+        if IsBoxClicked5 == true {
+            tickBoxFive.setImage(boxOn, for: UIControlState.normal)
+        }else {
+            tickBoxFive.setImage(boxOff, for: UIControlState.normal)
+        }
+    }
+    
+    @IBAction func boxSixAction(_ sender: UIButton) {
+        if IsBoxClicked6 == true {
+            IsBoxClicked6 = false
+            count -= 1
+        }else{
+            IsBoxClicked6 = true
+            count += 1
+        }
+        
+        if IsBoxClicked6 == true {
+            tickBoxSix.setImage(boxOn, for: UIControlState.normal)
+        }else {
+            tickBoxSix.setImage(boxOff, for: UIControlState.normal)
+        }
+    }
+    
+    @IBAction func boxSevenAction(_ sender: UIButton) {
+        if IsBoxClicked7 == true {
+            IsBoxClicked7 = false
+            count -= 1
+        }else{
+            IsBoxClicked7 = true
+            count += 1
+        }
+        
+        if IsBoxClicked7 == true {
+            tickBoxSeven.setImage(boxOn, for: UIControlState.normal)
+        }else {
+            tickBoxSeven.setImage(boxOff, for: UIControlState.normal)
+        }
+    }
+    @IBAction func boxEightAction(_ sender: UIButton) {
+        if IsBoxClicked8 == true {
+            count -= 1
+            IsBoxClicked8 = false
+        }else{
+            count += 1
+            IsBoxClicked8 = true
+        }
+        
+        if IsBoxClicked8 == true {
+            tickBoxEight.setImage(boxOn, for: UIControlState.normal)
+        }else {
+            tickBoxEight.setImage(boxOff, for: UIControlState.normal)
+        }
+    }
+    
+    @IBAction func boxNineAction(_ sender: UIButton) {
+        if IsBoxClicked9 == true {
+            IsBoxClicked9 = false
+            count -= 1
+        }else{
+            IsBoxClicked9 = true
+            count += 1
+        }
+        
+        if IsBoxClicked9 == true {
+            tickBoxNine.setImage(boxOn, for: UIControlState.normal)
+        }else {
+            tickBoxNine.setImage(boxOff, for: UIControlState.normal)
         }
     }
     
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var mainTextLabel: UILabel!
+    var boxOn = UIImage(named: "tick")
+    var boxOff = UIImage(named: "untick")
     
-    
+    var IsBoxClicked1: Bool!
+    var IsBoxClicked2: Bool!
+    var IsBoxClicked3: Bool!
+    var IsBoxClicked4: Bool!
+    var IsBoxClicked5: Bool!
+    var IsBoxClicked6: Bool!
+    var IsBoxClicked7: Bool!
+    var IsBoxClicked8: Bool!
+    var IsBoxClicked9: Bool!
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.loadGif(name: "mosquitobite")
-//        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"greengradient")!)
+        allboxClickedFalse()
+        view.backgroundColor = UIColor.white
+        resultLabel.isHidden = true
+        labelChangedColor()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "GradientBlue")!)
+//        tickBoxOne.imageView?.contentMode = UIViewContentMode.scaleAspectFill
 
+        
+    }
+    
+    func countTotal(){
+        resultLabel.text = "\(Int(CGFloat(count)/9*100))%"
+     print(count)
+        resultLabel.isHidden = false
     }
 
+    func allboxClickedFalse(){
+        IsBoxClicked1 = false
+        IsBoxClicked2 = false
+        IsBoxClicked3 = false
+        IsBoxClicked4 = false
+        IsBoxClicked5 = false
+        IsBoxClicked6 = false
+        IsBoxClicked7 = false
+        IsBoxClicked8 = false
+        IsBoxClicked9 = false
 
+    }
+    
+    func labelChangedColor(){
+//        
+//        if count = 1..3 {
+//            resultLabel.textColor = UIColor.green
+//        }else {
+//            resultLabel.textColor = UIColor.red
+//            
+//        }
+
+        
+    }
 
 }
+
