@@ -83,6 +83,7 @@ class LoginViewController: UIViewController {
                     print("user is signed in with facebook")
                     loginButton.isHidden = true
                 default:
+                    fbsdkLogin.isHidden = true
                     print("user is signed in with \(userInfo.providerID)")
                 }
             }
