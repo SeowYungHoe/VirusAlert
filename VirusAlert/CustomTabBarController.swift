@@ -10,6 +10,8 @@ import UIKit
 import FirebaseAuth
 
 class CustomTabBarController: UITabBarController {
+    
+    let uid = FIRAuth.auth()?.currentUser?.uid
 
     override func viewDidLoad() {
         super.viewDidLoad()
