@@ -9,17 +9,27 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FBSDKLoginKit
 
 class PostViewController: UIViewController {
-    
-    var displayNameInLabel : String?
 
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var inputAddressTextView: UITextView!
-    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var logOutButton: UIButton!{
+        didSet{
+        logOutButton.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let customFbButton = UIButton(type: .system)
+        customFbButton.backgroundColor = UIColor.blue
+        customFbButton.frame = CGRect(x: 60, y: 436, width: 280, height: 40)
+        customFbButton.setTitle("FaceBook Login", for: .normal)
+        view.addSubview(customFbButton)
+        
+        customFbButton.addTarget(self, action: #selector(handleCustomeFBLogin), for: .touchUpInside)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,24 +37,26 @@ class PostViewController: UIViewController {
         detectedNotLogIn()
     }
     
-//    func displayUserName() {
-//        let ref = FIRDatabase.database().reference()
-//        
-//        let uid = FIRAuth.auth()?.currentUser?.uid
-//        
-//        ref.child("username").child(uid!).observe(.value) { (snapshot) in
-//            
-//            print(snapshot)
-//            
-//            let value = snapshot.value as? NSDictionary
-//            let displayName = value?["name"] as? String ?? ""
-//            
-//            self.displayNameInLabel = displayName
-//            self.usernameLabel.text = self.displayNameInLabel
-//        }
-//        
-//    }
+    func handleCustomeFBLogin() {
+        FBSDKLoginManager().logIn(withReadPermissions: ["email", "public profile"], from: self) { (result, error) in
+            if error != nil {
+                print("fb log in failed", error)
+                return
+            }
+            
+            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
+                
+                if error != nil{
+                    print("Failed to start graph request:", error ?? "")
+                    return
+                }
+            }
+        }
+    }
     
+    
+        
+
     
     //if user not log in pop up message will appear
     func detectedNotLogIn() {
@@ -53,6 +65,7 @@ class PostViewController: UIViewController {
         if uid == nil {
             //self.postButton.isEnabled = false
             userNotLogInNotification()
+            
             return
         }else {
             return
@@ -61,7 +74,7 @@ class PostViewController: UIViewController {
     
     
     
-    
+    //user not detected 
     func userNotLogInNotification() {
         //alert will appear if no user found
         let alert = UIAlertController(title: "Not Logged In", message: "Please Log In to Post Location", preferredStyle: .alert)
@@ -90,6 +103,30 @@ class PostViewController: UIViewController {
 
         navigationController?.pushViewController(controller, animated: true)
     }
-
+    
+    func handleLogout() {
+        do {
+            try FIRAuth.auth()?.signOut()
+        }catch let logoutError {
+            print(logoutError)
+        }
+        ;
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    //check user logining in with fb or email
+    func displayUserLogInWith() {
+        if let providerData = FIRAuth.auth()?.currentUser?.providerData {
+            for userInfo in providerData {
+                switch userInfo.providerID {
+                case "facebook.com":
+                    print("user is signed in with facebook")
+                default:
+                    print("user is signed in with \(userInfo.providerID)")
+                }
+            }
+        }
+    }
 
 }

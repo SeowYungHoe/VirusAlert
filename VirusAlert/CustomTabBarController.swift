@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CustomTabBarController: UITabBarController {
 
@@ -16,6 +17,19 @@ class CustomTabBarController: UITabBarController {
          setViewControllers([createMapViewController(imageName: "map"), createTipsViewController(imageName: "tips"), createStatisticsViewController(imageName: "statistics"), createPostViewController(imageName: "summit")], animated: true)
 
     }
+    func displayUserLogInWith() {
+        if let providerData = FIRAuth.auth()?.currentUser?.providerData {
+            for userInfo in providerData {
+                switch userInfo.providerID {
+                case "facebook.com":
+                    print("user is signed in with facebook")
+                default:
+                    print("user is signed in with \(userInfo.providerID)")
+                }
+            }
+        }
+    }
+
 
     
     func createMapViewController(imageName: String) -> UINavigationController{
@@ -32,13 +46,11 @@ class CustomTabBarController: UITabBarController {
         let navController = UINavigationController(rootViewController: tipsViewController)
         navController.tabBarItem.image = UIImage(named: imageName)
         return navController
-
-
-}
+    }
     
     func createStatisticsViewController(imageName: String) -> UINavigationController{
         let storyboard = UIStoryboard(name: "Statistics", bundle: Bundle.main)
-        let statisticsViewController = storyboard.instantiateViewController(withIdentifier: "StatisticsViewController")
+        let statisticsViewController = storyboard.instantiateViewController(withIdentifier: "UserPostViewController")
         let navController = UINavigationController(rootViewController: statisticsViewController)
         navController.tabBarItem.image = UIImage(named: imageName)
         return navController
@@ -46,9 +58,11 @@ class CustomTabBarController: UITabBarController {
 
     func createPostViewController(imageName: String) -> UINavigationController{
         let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
-        let postViewController = storyboard.instantiateViewController(withIdentifier: "PostViewController")
+        let postViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
         let navController = UINavigationController(rootViewController: postViewController)
         navController.tabBarItem.image = UIImage(named: imageName)
         return navController
     }
 }
+
+
