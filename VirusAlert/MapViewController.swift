@@ -104,12 +104,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.delegate = self
         mapView.showsUserLocation = true
 
-        let location = self.locationManager.location?.coordinate
+        if let location = self.locationManager.location?.coordinate {
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        currentLocationCoordinate = CLLocationCoordinate2DMake(location!.latitude, location!.longitude)
+        currentLocationCoordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
         let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
         mapView.setRegion(region, animated: true)
-        
+        }
         
     }
     
@@ -166,12 +166,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func getCurrentLocation(){
         
-        let location = self.locationManager.location?.coordinate
+        if let location = self.locationManager.location?.coordinate{
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        currentLocationCoordinate = CLLocationCoordinate2DMake(location!.latitude, location!.longitude)
+        currentLocationCoordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
         let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
         mapView.setRegion(region, animated: true)
-        
+        }
     }
     
     //------------------------rock's start---------------------------
@@ -271,7 +271,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             dengueAnnotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
             dengueAnnotation.image = "mosquito"
             
-            
+            self.mapView.addAnnotation(dengueAnnotation)
+
 
 
 //            let dengueLoc = CLLocation(latitude: location.latitude, longitude: location.longitude)
@@ -287,14 +288,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             let dengueLoc = CLLocation(latitude: location.latitude, longitude: location.longitude)
             let loc = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+            if let location = self.locationManager.location?.coordinate{
             
-            let location = self.locationManager.location?.coordinate
-            var myLocation = CLLocation(latitude: (location?.latitude)!, longitude: (location?.longitude)!)
+            
+            var myLocation = CLLocation(latitude: (location.latitude), longitude: location.longitude)
             var distanceFromDengue = myLocation.distance(from: dengueLoc)
             dengueAnnotation.title = "\(distanceFromDengue.roundTo(places: 2))Meter Away"
+            }
             self.mapView.addAnnotation(dengueAnnotation)
             self.mapView.add(MKCircle(center: loc, radius: 150))
-
+            
             
 
 
