@@ -200,6 +200,10 @@
         <scene sceneID="Wdk-6p-oAD">
             <objects>
                 <viewController id="6La-hm-pSZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BLM-x2-j21"/>
+                        <viewControllerLayoutGuide type="bottom" id="MHf-jQ-rfJ"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bsr-u5-kDZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -208,6 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BSI-vp-wox" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="76" y="-187"/>
         </scene>
     </scenes>
 </document>

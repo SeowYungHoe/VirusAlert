@@ -81,7 +81,9 @@ class LoginViewController: UIViewController {
                 switch userInfo.providerID {
                 case "facebook.com":
                     print("user is signed in with facebook")
+                    loginButton.isHidden = true
                 default:
+                    fbsdkLogin.isHidden = true
                     print("user is signed in with \(userInfo.providerID)")
                 }
             }

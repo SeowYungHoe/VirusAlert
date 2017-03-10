@@ -20,18 +20,6 @@ class CustomTabBarController: UITabBarController {
          setViewControllers([createMapViewController(imageName: "map"), createTipsViewController(imageName: "tips"), createStatisticsViewController(imageName: "statistics"), createPostViewController(imageName: "summit")], animated: true)
 
     }
-    func displayUserLogInWith() {
-        if let providerData = FIRAuth.auth()?.currentUser?.providerData {
-            for userInfo in providerData {
-                switch userInfo.providerID {
-                case "facebook.com":
-                    print("user is signed in with facebook")
-                default:
-                    print("user is signed in with \(userInfo.providerID)")
-                }
-            }
-        }
-    }
 
 
     
