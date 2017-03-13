@@ -17,7 +17,7 @@ class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
         
         
-         setViewControllers([createMapViewController(imageName: "map"), createTipsViewController(imageName: "tips"), createStatisticsViewController(imageName: "statistics"), createPostViewController(imageName: "summit")], animated: true)
+         setViewControllers([createMapViewController(imageName: "map2"), createTipsViewController(imageName: "tips"), createPostViewController(imageName: "summit"), createLoginViewController(imageName: "Login")], animated: true)
 
     }
 
@@ -39,7 +39,7 @@ class CustomTabBarController: UITabBarController {
         return navController
     }
     
-    func createStatisticsViewController(imageName: String) -> UINavigationController{
+    func createPostViewController(imageName: String) -> UINavigationController{
         let storyboard = UIStoryboard(name: "Statistics", bundle: Bundle.main)
         let statisticsViewController = storyboard.instantiateViewController(withIdentifier: "UserPostViewController")
         let navController = UINavigationController(rootViewController: statisticsViewController)
@@ -48,7 +48,7 @@ class CustomTabBarController: UITabBarController {
     }
 
     
-    func createPostViewController(imageName: String) -> UINavigationController{
+    func createLoginViewController(imageName: String) -> UINavigationController{
         let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
         let postViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
         let navController = UINavigationController(rootViewController: postViewController)

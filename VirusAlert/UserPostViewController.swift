@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
+import MapKit
 
 class UserPostViewController: UIViewController {
 
@@ -16,16 +18,31 @@ class UserPostViewController: UIViewController {
             logOutButton.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
         }
     }
+    
+    var locationManager = CLLocationManager()
+    var currentLocationCoordinate : CLLocationCoordinate2D?
+
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         detectedNotLogIn()
     }
+    
+    
+    //---------------------------PostCurrentLocationToFirebase----------------------------
+  
+    
+    //--------------------------------------------------------------------------------------
     
     func detectedNotLogIn() {
         let uid = FIRAuth.auth()?.currentUser?.uid

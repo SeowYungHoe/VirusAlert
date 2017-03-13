@@ -25,8 +25,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let longitude: Double
     }
     
-    var currentLocationCoordinate : CLLocationCoordinate2D?
-    
     @IBOutlet weak var mapView: MKMapView!
     
     
@@ -54,13 +52,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     //---------------------------------- Constant And Variables -----------------------------
     var hospitalAnnotationArray: [MKAnnotation] = []
+    var dengueAnnotatonArray: [MKAnnotation] = []
+
     var locationManager = CLLocationManager()
     //rock's
     var resultSearchController:UISearchController? = nil
-    
     var selectedPin : MKPlacemark? = nil
-    var isInitialized = false
     var hospitalLocation : [Hospital] = []
+    var currentLocationCoordinate : CLLocationCoordinate2D?
+    //    var isInitialized = false
+
+
   //-----------------------------------------------------------------------------------------
     
     @IBOutlet weak var openButton: UIBarButtonItem!
@@ -71,13 +73,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         openButton.target = self.revealViewController()
         openButton.action = Selector("revealToggle:")
         
-        fetchAllHospital()
-        dengueLocation()
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        
+        getCurrentLocation()
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        fetchAllHospital()
+        dengueLocation()
         
         //----------------------rock's start-----------------------
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "TableViewResultDisplay") as! TableViewResultDisplay
@@ -101,28 +108,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //------------------------rock's end----------------------
         
         
-        mapView.delegate = self
-        mapView.showsUserLocation = true
+      
+        
+//        guard let location = self.locationManager.location?.coordinate else {return}
+//            let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+//            currentLocationCoordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
+//            let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
+//            mapView.setRegion(region, animated: true)
+        
 
-        if let location = self.locationManager.location?.coordinate {
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        currentLocationCoordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
-        mapView.setRegion(region, animated: true)
-        }
+//        if let location = self.locationManager.location?.coordinate {
+//        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+//        currentLocationCoordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
+//        let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
+//        mapView.setRegion(region, animated: true)
+//        }
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        mapView.showsUserLocation = true
-
-    }
+ 
     
     
     func hospitalAnnotationSwitch(){
@@ -148,10 +152,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        let location = self.locationManager.location!
 //        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         
+        
         let location = locations.last
         currentLocationCoordinate = CLLocationCoordinate2DMake((location?.coordinate.latitude)!, (location?.coordinate.longitude)!)
+        
+        //Dengue Annotation Title Update
         self.mapView.showsUserLocation = true
-
         
 //        let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
 //        mapView.setRegion(region, animated: true)
@@ -161,8 +167,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     }
     
-    
-
     
     func getCurrentLocation(){
         
@@ -193,8 +197,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func fetchAllHospital() {
         
-
-        
         let url = "https://api.foursquare.com/v2/venues/search?client_id=JBNXRUDYIBJP1MGSLXH2UOAFX3M0YZK3CVVINQE3OLK1R2CX%20&client_secret=0NIZEJGP0Q1YQCD0OOBBYI4TYEHWTDNOKT0P4GF4BOIDYTNL%20&v=20130815%20&near=%20Kuala+Lumpur%20&query=hospital"
         
         Alamofire.request(url, method: .get).validate().responseJSON { response in
@@ -220,27 +222,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                             hospAnnotation.coordinate = CLLocationCoordinate2DMake(hospital.latitude!, hospital.longitude!)
                             hospAnnotation.title = hospital.name
                             hospAnnotation.image = "hospital"
+                            hospAnnotation.anotationType = .hospital
                             self.mapView.addAnnotation(hospAnnotation)
                             self.hospitalAnnotationArray.append(hospAnnotation)
-
-                           
-                            
-                        
                         
                         }
-                    
                         
                     }
-                    
-                    
+            
                 }
             
             case .failure(let error):
                 print(error)
             }
         }
-    
-
     }
     
 //    func filterAnnotation(){
@@ -248,6 +243,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //            annot.
 //        }
 //    }
+    
+    
     
     func handleLogout() {
         do {
@@ -261,46 +258,34 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     //-------------------------------------Annotation Related-----------------------------------------------
+
     
-      
     
     func dengueLocation(){
         
         for location in dengueLatAndLong {
+            
             let dengueAnnotation = CustomPointAnnotation()
+            dengueAnnotation.anotationType = .dengue
             dengueAnnotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
             dengueAnnotation.image = "mosquito"
             
-            self.mapView.addAnnotation(dengueAnnotation)
-
-
-
-//            let dengueLoc = CLLocation(latitude: location.latitude, longitude: location.longitude)
-//            let loc = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-//            
-//            let location = self.locationManager.location?.coordinate
-//            var myLocation = CLLocation(latitude: (location?.latitude)!, longitude: (location?.longitude)!)
-//            var distanceFromDengue = myLocation.distance(from: dengueLoc)
-//            dengueAnnotation.title = "\(distanceFromDengue.roundTo(places: 2))Meter Away"
-//            self.mapView.addAnnotation(dengueAnnotation)
-//            self.mapView.add(MKCircle(center: loc, radius: 150))
-            
-            
             let dengueLoc = CLLocation(latitude: location.latitude, longitude: location.longitude)
             let loc = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-            if let location = self.locationManager.location?.coordinate{
             
+//            if let location = self.locationManager.location?.coordinate{
+//            var myLocation = CLLocation(latitude: (location.latitude), longitude: location.longitude)
+//            var distanceFromDengue = myLocation.distance(from: dengueLoc)
+//            dengueAnnotation.title = "\(distanceFromDengue.roundTo(places: 2))Meter Away"
+//            }
+            dengueAnnotation.title = "a"
             
-            var myLocation = CLLocation(latitude: (location.latitude), longitude: location.longitude)
-            var distanceFromDengue = myLocation.distance(from: dengueLoc)
-            dengueAnnotation.title = "\(distanceFromDengue.roundTo(places: 2))Meter Away"
-            }
+            self.dengueAnnotatonArray.append(dengueAnnotation)
             self.mapView.addAnnotation(dengueAnnotation)
             self.mapView.add(MKCircle(center: loc, radius: 150))
             
             
-
-
+            
 //            if let currentLocation = currentLocationCoordinate {
 //
 //                
@@ -317,6 +302,32 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
     }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        guard let selectedAnnotation =  view.annotation as? CustomPointAnnotation else {
+            return
+        }
+        
+        switch selectedAnnotation.anotationType {
+        case .dengue:
+            
+            guard let locationz = self.locationManager.location?.coordinate else {return}
+            var myLocation = CLLocation(latitude: (locationz.latitude), longitude: locationz.longitude)
+            
+            
+            let dengueLoc = CLLocation(latitude: selectedAnnotation.coordinate.latitude, longitude: selectedAnnotation.coordinate.longitude)
+                var distanceFromDengue = myLocation.distance(from: dengueLoc)
+                print(distanceFromDengue)
+                selectedAnnotation.title = "\(distanceFromDengue.roundTo(places: 2))Meter Away"
+            
+        default:
+            break
+        }
+
+    }
+    
+    
     let annotationIdentifier = "aaa"
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
         
@@ -364,8 +375,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     //------------------------------Dengue Longitude and Latitude------------------------------------
     var dengueLatAndLong = [
         Location(latitude: 3.135, longitude: 101.63),
+        Location(latitude: 3.145733, longitude: 101.688906),
         Location(latitude: 3.1308, longitude: 101.627),
-        Location(latitude: 3.145733, longitude: 101.688906)
+        Location(latitude: 3.1308, longitude: 101.631),
+        Location(latitude: 3.1363, longitude: 101.620),
+        Location(latitude: 3.1333, longitude: 101.619),
+        Location(latitude: 3.1435, longitude: 101.615),
+        Location(latitude: 3.133, longitude: 101.609),
+        Location(latitude: 3.154, longitude: 101.625)
+        
+
+
+
     ]
 }
 
