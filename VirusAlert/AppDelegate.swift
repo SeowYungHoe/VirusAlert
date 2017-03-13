@@ -63,10 +63,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func loadHomePage(){
-        //let virusMapPage = CustomTabBarController()
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let VC = mainStoryboard.instantiateViewController(withIdentifier: "SWRevealViewController")
-        window?.rootViewController = VC
+        let virusMapPage = CustomTabBarController()
+        //let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        //let VC = mainStoryboard.instantiateViewController(withIdentifier: "SWRevealViewController")
+        
+        window?.rootViewController = virusMapPage
         //window?.rootViewController = virusMapPage
 //        present(virusMapPage, animated: true, completion: nil)
     }

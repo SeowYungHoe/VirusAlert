@@ -18,7 +18,7 @@ protocol HandleMapSearch {
 }
 
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{ //HospitalSwiftDelegate
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, HospitalSwiftDelegate {
     
     struct Location {
 //        let title: String
@@ -64,11 +64,40 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
    
     @IBOutlet weak var openButton: UIBarButtonItem!
     
+    
+    var sideVC : ResultShowViewController!
+    
+    @IBAction func openButtonTapped(_ sender: Any) {
+    
+        //if sideVC = empty
+        if sideVC == nil {
+            //get menu
+            let targetStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            if let vc = targetStoryboard.instantiateViewController(withIdentifier: "ResultShowViewController") as? ResultShowViewController {
+                sideVC = vc
+            } else {
+                return
+            }
+        }
+        
+        //init secondView
+        sideVC.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: view.frame.width / 2, height: view.frame.height))
+            
+        sideVC.delegate = self
+        
+        view.addSubview(sideVC.view)
+        self.addChildViewController(sideVC)
+        
+        sideVC.didMove(toParentViewController: self)
+        
+        
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        openButton.target = self.revealViewController()
-        openButton.action = Selector("revealToggle:")
         
         fetchAllHospital()
         dengueLocation()
@@ -124,14 +153,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     
-    func hospitalAnnotationSwitch(){
-        
-        if switchAnnotationHospital.isOn == true {
-            fetchAllHospital()
-        }else{
-            switchAnnotationHospital.tintColor = UIColor.red
-            self.mapView.removeAnnotations(hospitalAnnotationArray)
-        }
+   func hospitalAnnotationSwitch(){
+    print("@@@444444")
+//        
+//        if switchAnnotationHospital.isOn == true {
+//            fetchAllHospital()
+//        }else{
+//            switchAnnotationHospital.tintColor = UIColor.red
+//            self.mapView.removeAnnotations(hospitalAnnotationArray)
+//        }
     }
     
     //---------------------------------------- LOCATIONS ------------------------------------------------
@@ -360,6 +390,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         Location(latitude: 3.1308, longitude: 101.627),
         Location(latitude: 3.145733, longitude: 101.688906)
     ]
+    
 }
 
 
@@ -392,6 +423,8 @@ extension MapViewController : HandleMapSearch {
     }
 }
 
+
+
 extension Double {
     /// Rounds the double to decimal places value
     func roundTo(places:Int) -> Double {
@@ -423,6 +456,8 @@ extension Double {
 //
 //
 //                        }
+
+
 
 
 

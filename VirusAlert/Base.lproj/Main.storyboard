@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3Cc-YU-N9t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cnS-AH-GeF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,30 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Result Show View Controller-->
-        <scene sceneID="mOK-wj-MkZ">
-            <objects>
-                <viewController storyboardIdentifier="ResultShowViewController" id="yLx-Rx-Y3Y" customClass="ResultShowViewController" customModule="VirusAlert" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bHM-Cb-Yh4"/>
-                        <viewControllerLayoutGuide type="bottom" id="3He-AT-4ga"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qsz-l9-Xwh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-eO-Lr4">
-                                <rect key="frame" x="163" y="201" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bj6-yn-PlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2015" y="-654"/>
-        </scene>
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -69,7 +45,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Gbe-W2-GrN">
-                        <barButtonItem key="leftBarButtonItem" image="section" id="cVN-Jh-MK8"/>
+                        <barButtonItem key="leftBarButtonItem" image="section" id="cVN-Jh-MK8">
+                            <connections>
+                                <action selector="openButtonTapped:" destination="BYZ-38-t0r" id="ugA-1y-E51"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -81,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2841" y="133"/>
+            <point key="canvasLocation" x="3780" y="132.68365817091455"/>
         </scene>
         <!--Table View Result Display-->
         <scene sceneID="hIr-tK-ALz">
@@ -125,43 +105,77 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOH-wS-C2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3673" y="133"/>
+            <point key="canvasLocation" x="4612" y="132.68365817091455"/>
         </scene>
-        <!--Custom Tab Bar Controller-->
-        <scene sceneID="lPI-6v-sAa">
+        <!--Result Show View Controller-->
+        <scene sceneID="U9m-Yv-i3k">
             <objects>
-                <tabBarController id="sHv-8m-TcQ" customClass="CustomTabBarController" customModule="VirusAlert" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="Wxi-kT-UVR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PfQ-Xi-LdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2014" y="133"/>
-        </scene>
-        <!--Reveal View Controller-->
-        <scene sceneID="kl6-kR-kfJ">
-            <objects>
-                <viewController storyboardIdentifier="SWRevealViewController" id="3Cc-YU-N9t" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultShowViewController" id="prh-du-MNr" customClass="ResultShowViewController" customModule="VirusAlert" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cT1-Av-9D1"/>
-                        <viewControllerLayoutGuide type="bottom" id="wrr-W9-7mj"/>
+                        <viewControllerLayoutGuide type="top" id="ufc-sZ-I7f"/>
+                        <viewControllerLayoutGuide type="bottom" id="JQS-pF-dw6"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EkC-Ei-WmQ">
+                    <view key="view" contentMode="scaleToFill" id="vcZ-eB-fea">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N7Y-G0-ddR">
+                                <rect key="frame" x="163" y="318" width="51" height="31"/>
+                                <connections>
+                                    <action selector="mosquitoSwitch:" destination="prh-du-MNr" eventType="valueChanged" id="1fT-5k-b2H"/>
+                                </connections>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MzP-KO-uvU">
+                                <rect key="frame" x="163" y="369" width="51" height="31"/>
+                                <connections>
+                                    <action selector="userPostSwitch:" destination="prh-du-MNr" eventType="valueChanged" id="R9R-Co-oao"/>
+                                </connections>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jzf-hw-M8C">
+                                <rect key="frame" x="163" y="267" width="51" height="31"/>
+                                <connections>
+                                    <action selector="hospitalSwitch:" destination="prh-du-MNr" eventType="valueChanged" id="nDc-rn-gVS"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGR-de-F4H">
+                                <rect key="frame" x="168" y="420" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jzf-hw-M8C" firstAttribute="centerX" secondItem="vcZ-eB-fea" secondAttribute="centerX" id="0Xb-Nz-qNR"/>
+                            <constraint firstItem="N7Y-G0-ddR" firstAttribute="centerY" secondItem="vcZ-eB-fea" secondAttribute="centerY" id="EFu-Cx-Kty"/>
+                            <constraint firstItem="yGR-de-F4H" firstAttribute="centerX" secondItem="vcZ-eB-fea" secondAttribute="centerX" id="I3y-If-Ymu"/>
+                            <constraint firstItem="N7Y-G0-ddR" firstAttribute="top" secondItem="jzf-hw-M8C" secondAttribute="bottom" constant="20" id="Mes-yK-ctD"/>
+                            <constraint firstItem="N7Y-G0-ddR" firstAttribute="centerX" secondItem="vcZ-eB-fea" secondAttribute="centerX" id="P22-lV-dXR"/>
+                            <constraint firstItem="MzP-KO-uvU" firstAttribute="centerX" secondItem="vcZ-eB-fea" secondAttribute="centerX" id="akk-56-GOt"/>
+                            <constraint firstItem="yGR-de-F4H" firstAttribute="top" secondItem="MzP-KO-uvU" secondAttribute="bottom" constant="20" id="vf9-33-PBf"/>
+                            <constraint firstItem="MzP-KO-uvU" firstAttribute="top" secondItem="N7Y-G0-ddR" secondAttribute="bottom" constant="20" id="xZ0-Zj-zhW"/>
+                        </constraints>
                     </view>
-                    <connections>
-                        <segue destination="yLx-Rx-Y3Y" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="PK8-hx-dhd"/>
-                        <segue destination="sHv-8m-TcQ" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="DjS-pz-Z3X"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HDm-yy-VlY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eg7-Vg-VJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118" y="133"/>
+            <point key="canvasLocation" x="3780" y="-592"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hTo-LL-RSP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cnS-AH-GeF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hox-UH-5sw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="X0O-ag-9Iv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FMv-2u-fTN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2840.8000000000002" y="132.68365817091455"/>
         </scene>
     </scenes>
     <resources>
