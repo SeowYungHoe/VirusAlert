@@ -27,8 +27,10 @@
 		C0F0EBB51E67DC77004DCB14 /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F0EBB41E67DC77004DCB14 /* Hospital.swift */; };
 		DD0483FE1E6E6B0F005E069B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0483FD1E6E6B0F005E069B /* SWRevealViewController.m */; };
 		DD04840A1E6ECE73005E069B /* TableViewResultDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0484091E6ECE73005E069B /* TableViewResultDisplay.swift */; };
-		DD28607A1E707E210018AE50 /* DisplaySearchBarResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2860791E707E210018AE50 /* DisplaySearchBarResult.swift */; };
 		DD28607C1E7137DE0018AE50 /* UserPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28607B1E7137DE0018AE50 /* UserPostViewController.swift */; };
+		DD33DA3F1E7404FA00A3F7FE /* ResultShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33DA3E1E7404FA00A3F7FE /* ResultShowViewController.swift */; };
+		DD33DA481E75C61700A3F7FE /* micro2.gif in Resources */ = {isa = PBXBuildFile; fileRef = DD33DA471E75C61700A3F7FE /* micro2.gif */; };
+		DD33DA4A1E75C6A400A3F7FE /* micro.gif in Resources */ = {isa = PBXBuildFile; fileRef = DD33DA491E75C6A400A3F7FE /* micro.gif */; };
 		DDFD92631E669CA50059E0E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */; };
 		DDFD92671E66D8050059E0E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD92661E66D8050059E0E6 /* LoginViewController.swift */; };
 		DDFD92691E66D82F0059E0E6 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDFD92681E66D82F0059E0E6 /* Login.storyboard */; };
@@ -63,8 +65,10 @@
 		DD0483FC1E6E6B0F005E069B /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		DD0483FD1E6E6B0F005E069B /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		DD0484091E6ECE73005E069B /* TableViewResultDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewResultDisplay.swift; sourceTree = "<group>"; };
-		DD2860791E707E210018AE50 /* DisplaySearchBarResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplaySearchBarResult.swift; sourceTree = "<group>"; };
 		DD28607B1E7137DE0018AE50 /* UserPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostViewController.swift; sourceTree = "<group>"; };
+		DD33DA3E1E7404FA00A3F7FE /* ResultShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultShowViewController.swift; sourceTree = "<group>"; };
+		DD33DA471E75C61700A3F7FE /* micro2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = micro2.gif; path = ../../../Downloads/micro2.gif; sourceTree = "<group>"; };
+		DD33DA491E75C6A400A3F7FE /* micro.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = micro.gif; path = ../../../.Trash/micro.gif; sourceTree = "<group>"; };
 		DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDFD92661E66D8050059E0E6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DDFD92681E66D82F0059E0E6 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -151,10 +155,10 @@
 				C05431C01E66D32C003C7CE7 /* CustomTabBarController.swift */,
 				C09435C81E66A14600E2F88E /* Authentication */,
 				C09A13641E668C0B006B0DF4 /* MapViewController.swift */,
+				DD33DA3E1E7404FA00A3F7FE /* ResultShowViewController.swift */,
 				C00772C01E6D47BD00E579DE /* CustomPointAnnotation.swift */,
 				C0F0EBB41E67DC77004DCB14 /* Hospital.swift */,
 				DD0484091E6ECE73005E069B /* TableViewResultDisplay.swift */,
-				DD2860791E707E210018AE50 /* DisplaySearchBarResult.swift */,
 				C09A13661E668C0B006B0DF4 /* Main.storyboard */,
 				DD0483FC1E6E6B0F005E069B /* SWRevealViewController.h */,
 				DD0483FD1E6E6B0F005E069B /* SWRevealViewController.m */,
@@ -189,6 +193,8 @@
 		DDFD92651E66A29C0059E0E6 /* Rock */ = {
 			isa = PBXGroup;
 			children = (
+				DD33DA471E75C61700A3F7FE /* micro2.gif */,
+				DD33DA491E75C6A400A3F7FE /* micro.gif */,
 				C0BA2AFA1E6E6F150019AF35 /* dna.gif */,
 				DDFD92661E66D8050059E0E6 /* LoginViewController.swift */,
 				C0BA2AF81E6E6DA60019AF35 /* GifImageExtension.swift */,
@@ -269,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0BA2AFB1E6E6F150019AF35 /* dna.gif in Resources */,
+				DD33DA481E75C61700A3F7FE /* micro2.gif in Resources */,
 				C05431C31E66E2DA003C7CE7 /* Tips.storyboard in Resources */,
 				C09A136D1E668C0B006B0DF4 /* LaunchScreen.storyboard in Resources */,
 				DDFD92631E669CA50059E0E6 /* GoogleService-Info.plist in Resources */,
@@ -278,6 +285,7 @@
 				C01539541E6E7E5300E0E14A /* mosquitobite.gif in Resources */,
 				C05431C81E67C03E003C7CE7 /* Statistics.storyboard in Resources */,
 				C09A13681E668C0B006B0DF4 /* Main.storyboard in Resources */,
+				DD33DA4A1E75C6A400A3F7FE /* micro.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,8 +345,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C09A13651E668C0B006B0DF4 /* MapViewController.swift in Sources */,
-				DD28607A1E707E210018AE50 /* DisplaySearchBarResult.swift in Sources */,
 				DDFD92671E66D8050059E0E6 /* LoginViewController.swift in Sources */,
+				DD33DA3F1E7404FA00A3F7FE /* ResultShowViewController.swift in Sources */,
 				C09A13631E668C0B006B0DF4 /* AppDelegate.swift in Sources */,
 				C05431C51E66E37D003C7CE7 /* TipsViewController.swift in Sources */,
 				C0F0EBB51E67DC77004DCB14 /* Hospital.swift in Sources */,

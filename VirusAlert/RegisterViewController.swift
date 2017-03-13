@@ -21,14 +21,19 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var userRegisterPassTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!{
         didSet{
-            signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
-        }
+                signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+            }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-          gifView.loadGif(name: "dna")
+        gifView.loadGif(name: "dna")
+        
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "endKeyBoard")
+        
+        view.addGestureRecognizer(tap)
+        
     }
     
     func handleSignUp() {
@@ -37,10 +42,13 @@ class RegisterViewController: UIViewController {
         let email = userRegisterEmailTextField.text
         let password = userRegisterPassTextField.text
         
+        
+        
         FIRAuth.auth()?.createUser(withEmail: email!, password: password!, completion: { (user, error) in
             if error != nil{
                 print(error! as NSError)
-                self.presentPostPage()
+                //if user input error/mising info this pop up will appear. (userDidNotFillUp)
+                self.userDidNotFillUp()
                 return
             }
             
@@ -51,11 +59,9 @@ class RegisterViewController: UIViewController {
                 if error != nil {
                     print("err")
                     return
-                }
-                
-                self.presentPostPage()
+                    }                
+                })
             })
-        })
     }
 
     func presentPostPage() {
@@ -63,6 +69,26 @@ class RegisterViewController: UIViewController {
         
         present(controller, animated: true, completion: nil)
     }
+    
+    func userDidNotFillUp() {
+        //alert will appear if no user found
+        let alert = UIAlertController(title: "Fail to Create", message: "Missing Info / Detail not Fill in correctly", preferredStyle: .alert)
+        
+        //present to login page
+        let okAction = UIAlertAction(title: "Okay", style: .default)
+        
+        //input action into UIAlertController
+        alert.addAction(okAction)
+   
+        
+        //presenting the alert
+        present(alert, animated:true, completion: nil)
+    }
+    
+    func endKeyBoard() {
+        view.endEditing(true)
+    }
+
 
 
 }

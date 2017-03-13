@@ -8,34 +8,34 @@
 
 import UIKit
 import FirebaseAuth
-import Firebase
 import MapKit
 
-class UserPostViewController: UIViewController {
+class UserPostViewController: UIViewController, CLLocationManagerDelegate {
 
-    @IBOutlet weak var logOutButton: UIButton!{
-        didSet{
-            logOutButton.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
-        }
-    }
+    @IBOutlet weak var textShown: UITextView!
+    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var map: MKMapView!
     
-    var locationManager = CLLocationManager()
-    var currentLocationCoordinate : CLLocationCoordinate2D?
-
-
+    //----------------properties-----------------
+    
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         locationManager.delegate = self
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.requestWhenInUseAuthorization()
+        locationManager.startMonitoringSignificantLocationChanges()
         locationManager.startUpdatingLocation()
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        detectedNotLogIn()
+        noUid()
     }
     
     
@@ -85,15 +85,33 @@ class UserPostViewController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
         }
     
-    func handleLogout() {
-        do {
-            try FIRAuth.auth()?.signOut()
-        }catch let logoutError {
-            print(logoutError)
+    func noUid() {
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        
+        if uid == nil {
+            postButton.isEnabled = false
+            
+            return
+        }else {
+            textShown.isHidden = true
+            postButton.isEnabled = true
+            
+            return
         }
-        ;
-        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
+        
+        let span : MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let myLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+        map.setRegion(region, animated: true)
+        
+        print(location.coordinate)
+        
+        self.map.showsUserLocation = true
         
     }
-
+    
 }
