@@ -14,10 +14,11 @@ import CoreLocation
 import FirebaseAuth
 
 protocol HandleMapSearch {
-     func dropPinZoomIn(placemark: MKPlacemark)
+    func dropPinZoomIn(placemark: MKPlacemark)    
 }
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{ //HospitalSwiftDelegate
     
     struct Location {
 //        let title: String
@@ -45,11 +46,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    @IBOutlet weak var logoutButton: UIBarButtonItem!
-    
-    @IBAction func logOutTapped(_ sender: Any) {
-        handleLogout()
-    }
     
     
     //---------------------------------- Constant And Variables -----------------------------
@@ -61,13 +57,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var selectedPin : MKPlacemark? = nil
     var isInitialized = false
     var hospitalLocation : [Hospital] = []
+        
+    
   //-----------------------------------------------------------------------------------------
     
+   
     @IBOutlet weak var openButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         openButton.target = self.revealViewController()
         openButton.action = Selector("revealToggle:")
         
@@ -133,8 +132,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             switchAnnotationHospital.tintColor = UIColor.red
             self.mapView.removeAnnotations(hospitalAnnotationArray)
         }
-      
-      
     }
     
     //---------------------------------------- LOCATIONS ------------------------------------------------
@@ -240,15 +237,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             }
         }
     
+        
 
+    
     }
-    
-//    func filterAnnotation(){
-//        for annot in mapView.annotations {
-//            annot.
-//        }
-//    }
-    
+
     func handleLogout() {
         do {
             try FIRAuth.auth()?.signOut()

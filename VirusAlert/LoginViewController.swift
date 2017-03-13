@@ -26,15 +26,33 @@ class LoginViewController: UIViewController {
             fbsdkLogin.delegate = self
             //if it doesnt show email at first, apply this and specifically name the item that you would like it to be printed out.
             fbsdkLogin.readPermissions = ["email"]
+            fbsdkLogin.layer.borderWidth = 1
+            fbsdkLogin.layer.cornerRadius = 5
+            fbsdkLogin.layer.masksToBounds = true
         }
     }
     @IBOutlet weak var loginButton: UIButton! {
         didSet {
             loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+            loginButton.layer.borderWidth = 1
+            loginButton.layer.cornerRadius = 5
+            loginButton.layer.masksToBounds = true
         }
     }
     
-    @IBOutlet weak var fbsdkButton: FBSDKButton!
+    @IBOutlet weak var logOutButton: UIButton!{
+        didSet{
+        logOutButton.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
+        }
+    }
+        
+    @IBOutlet weak var registerButton2: UIButton!{
+        didSet{
+            registerButton2.layer.borderWidth = 1
+            registerButton2.layer.cornerRadius = 5
+            registerButton2.layer.masksToBounds = true
+        }
+    }
     
     @IBAction func registerButton(_ sender: UIButton) {
         guard let controller = storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController else {return}
@@ -47,8 +65,31 @@ class LoginViewController: UIViewController {
         
         FIRef = FIRDatabase.database().reference()
         
-        gifView.loadGif(name: "dna")
+        gifView.loadGif(name: "micro")
         
+        hideLogOutButton()
+        
+        
+        
+        
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "endKeyBoard")
+        
+        view.addGestureRecognizer(tap)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.black
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        displayUserLogInWith()
+
     }
     
     func login() {
@@ -58,15 +99,15 @@ class LoginViewController: UIViewController {
                 print("successfull log in")
                 return
             }
-
-            self.presentPostPage()
             
         })
         
     }
     
     func presentPostPage() {
-        guard let controller = storyboard?.instantiateViewController(withIdentifier: "PostViewController") as? PostViewController else {return}
+        let storyboard = UIStoryboard(name: "Statistics", bundle: Bundle.main)
+        
+        let controller = storyboard.instantiateViewController(withIdentifier: "UserPostViewController")
         
         let  _ = navigationController?.popViewController(animated: false)
         //navigationController?.pushViewController(controller, animated: true)
@@ -82,9 +123,16 @@ class LoginViewController: UIViewController {
                 case "facebook.com":
                     print("user is signed in with facebook")
                     loginButton.isHidden = true
+                    logOutButton.isHidden = true
+                    registerButton2.isHidden = true
+                    
+                    
                 default:
-                    fbsdkLogin.isHidden = true
                     print("user is signed in with \(userInfo.providerID)")
+                    fbsdkLogin.isHidden = true
+                    loginButton.isHidden = true
+                    registerButton2.isHidden = true
+                    logOutButton.isHidden = false
                 }
             }
         }
@@ -94,6 +142,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController : FBSDKLoginButtonDelegate {
    
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        handleLogout()
         print("Did log out from FB")
     }
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -160,5 +209,28 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
             }
         })
     }
+    func handleLogout() {
+        do {
+            try FIRAuth.auth()?.signOut()
+        }catch let logoutError {
+            print(logoutError)
+        }
+        ;
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func endKeyBoard() {
+        view.endEditing(true)
+    }
+    
+    func hideLogOutButton(){
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        
+        if uid == nil {
+            logOutButton.isHidden = true
+        }
+    }
 }
+
 
