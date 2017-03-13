@@ -68,7 +68,7 @@
 		DD28607B1E7137DE0018AE50 /* UserPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostViewController.swift; sourceTree = "<group>"; };
 		DD33DA3E1E7404FA00A3F7FE /* ResultShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultShowViewController.swift; sourceTree = "<group>"; };
 		DD33DA471E75C61700A3F7FE /* micro2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = micro2.gif; path = ../../../Downloads/micro2.gif; sourceTree = "<group>"; };
-		DD33DA491E75C6A400A3F7FE /* micro.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = micro.gif; path = ../../../.Trash/micro.gif; sourceTree = "<group>"; };
+		DD33DA491E75C6A400A3F7FE /* micro.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = micro.gif; path = ../../../Downloads/micro.gif; sourceTree = "<group>"; };
 		DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDFD92661E66D8050059E0E6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DDFD92681E66D82F0059E0E6 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };

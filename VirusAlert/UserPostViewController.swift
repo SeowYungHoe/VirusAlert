@@ -38,6 +38,12 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
         noUid()
     }
     
+    
+    //---------------------------PostCurrentLocationToFirebase----------------------------
+  
+    
+    //--------------------------------------------------------------------------------------
+    
     func detectedNotLogIn() {
         let uid = FIRAuth.auth()?.currentUser?.uid
         

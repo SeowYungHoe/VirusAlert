@@ -9,8 +9,14 @@
 import UIKit
 import MapKit
 
+enum CustomAnotationType {
+    case hospital
+    case dengue
+}
+
 class CustomPointAnnotation: MKPointAnnotation {
     
+    var anotationType : CustomAnotationType = .dengue
     var image: String!
 
 }

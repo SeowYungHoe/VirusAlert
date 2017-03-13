@@ -199,7 +199,6 @@ class TipsViewController: UIViewController {
         resultLabel.isHidden = true
         labelChangedColor()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "GradientBlue")!)
-//        tickBoxOne.imageView?.contentMode = UIViewContentMode.scaleAspectFill
 
         
     }

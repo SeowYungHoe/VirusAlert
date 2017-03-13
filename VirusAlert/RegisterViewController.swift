@@ -62,10 +62,8 @@ class RegisterViewController: UIViewController {
                     }                
                 })
             })
-        }
-    
-    
-    
+    }
+
     func presentPostPage() {
         guard let controller = storyboard?.instantiateViewController(withIdentifier: "PostViewController") as? PostViewController else {return}
         
