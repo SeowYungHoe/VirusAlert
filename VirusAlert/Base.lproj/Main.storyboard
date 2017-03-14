@@ -28,17 +28,12 @@
                                 <rect key="frame" x="10" y="578" width="57" height="49"/>
                                 <state key="normal" image="locationTarget"/>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yfx-2W-S84">
-                                <rect key="frame" x="316" y="596" width="51" height="31"/>
-                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iq1-Qy-3eY" secondAttribute="bottom" constant="40" id="Cja-tM-HsE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BjZ-oz-vJM" secondAttribute="bottom" id="MYH-mR-VaM"/>
                             <constraint firstItem="BjZ-oz-vJM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="S6o-2q-YVm"/>
-                            <constraint firstAttribute="trailing" secondItem="yfx-2W-S84" secondAttribute="trailing" constant="10" id="W3o-Fx-e3x"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yfx-2W-S84" secondAttribute="bottom" constant="40" id="Whf-hw-s02"/>
                             <constraint firstItem="iq1-Qy-3eY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="XYg-Wq-gAd"/>
                             <constraint firstItem="BjZ-oz-vJM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Y1s-9J-92d"/>
                             <constraint firstAttribute="trailing" secondItem="BjZ-oz-vJM" secondAttribute="trailing" id="mUb-PV-Oi5"/>
@@ -56,7 +51,6 @@
                         <outlet property="currentLocationButtonTapped" destination="iq1-Qy-3eY" id="br5-vP-rgJ"/>
                         <outlet property="mapView" destination="BjZ-oz-vJM" id="Bpc-Bs-6gq"/>
                         <outlet property="openButton" destination="cVN-Jh-MK8" id="NVX-Lt-V2R"/>
-                        <outlet property="switchAnnotationHospital" destination="yfx-2W-S84" id="I1a-CJ-8Se"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -119,45 +113,110 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N7Y-G0-ddR">
-                                <rect key="frame" x="163" y="318" width="51" height="31"/>
-                                <connections>
-                                    <action selector="mosquitoSwitch:" destination="prh-du-MNr" eventType="valueChanged" id="1fT-5k-b2H"/>
-                                </connections>
-                            </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MzP-KO-uvU">
-                                <rect key="frame" x="163" y="369" width="51" height="31"/>
-                                <connections>
-                                    <action selector="userPostSwitch:" destination="prh-du-MNr" eventType="valueChanged" id="R9R-Co-oao"/>
-                                </connections>
-                            </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jzf-hw-M8C">
-                                <rect key="frame" x="163" y="267" width="51" height="31"/>
-                                <connections>
-                                    <action selector="hospitalSwitch:" destination="prh-du-MNr" eventType="valueChanged" id="nDc-rn-gVS"/>
-                                </connections>
-                            </switch>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGR-de-F4H">
-                                <rect key="frame" x="168" y="420" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="MUn-Op-1Sd">
+                                <rect key="frame" x="113" y="139" width="49" height="143"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jzf-hw-M8C">
+                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="hospitalSwitch:" destination="prh-du-MNr" eventType="valueChanged" id="nDc-rn-gVS"/>
+                                        </connections>
+                                    </switch>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N7Y-G0-ddR">
+                                        <rect key="frame" x="0.0" y="56" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="mosquitoSwitch:" destination="prh-du-MNr" eventType="valueChanged" id="1fT-5k-b2H"/>
+                                        </connections>
+                                    </switch>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MzP-KO-uvU">
+                                        <rect key="frame" x="0.0" y="112" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="userPostSwitch:" destination="prh-du-MNr" eventType="valueChanged" id="R9R-Co-oao"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-09-qod">
+                                <rect key="frame" x="35" y="135" width="48" height="150"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hospitalssss" translatesAutoresizingMaskIntoConstraints="NO" id="1kM-mZ-hnU">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mosquito" translatesAutoresizingMaskIntoConstraints="NO" id="p1M-fF-Q78">
+                                        <rect key="frame" x="0.0" y="51" width="48" height="48"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userPostedSick" translatesAutoresizingMaskIntoConstraints="NO" id="f79-8Q-f9L">
+                                        <rect key="frame" x="0.0" y="102" width="48" height="48"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remove Icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvX-9h-11v">
+                                <rect key="frame" x="35" y="80" width="132.5" height="27.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="WiL-9u-Yf1">
+                                <rect key="frame" x="35" y="315" width="48" height="150"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hospitalssss" translatesAutoresizingMaskIntoConstraints="NO" id="2Q4-Oi-zsC">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mosquito" translatesAutoresizingMaskIntoConstraints="NO" id="pbU-JH-ViS">
+                                        <rect key="frame" x="0.0" y="51" width="48" height="48"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userPostedSick" translatesAutoresizingMaskIntoConstraints="NO" id="AZe-PM-3cL">
+                                        <rect key="frame" x="0.0" y="102" width="48" height="48"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="Gcx-DO-dzR">
+                                <rect key="frame" x="98" y="327" width="87" height="130"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospial " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgr-JJ-rRD">
+                                        <rect key="frame" x="0.0" y="0.0" width="87" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dengue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jt1-ud-CrY">
+                                        <rect key="frame" x="0.0" y="53" width="87" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Post" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8h-2W-A2E">
+                                        <rect key="frame" x="0.0" y="106" width="87" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jzf-hw-M8C" firstAttribute="centerX" secondItem="vcZ-eB-fea" secondAttribute="centerX" id="0Xb-Nz-qNR"/>
-                            <constraint firstItem="N7Y-G0-ddR" firstAttribute="centerY" secondItem="vcZ-eB-fea" secondAttribute="centerY" id="EFu-Cx-Kty"/>
-                            <constraint firstItem="yGR-de-F4H" firstAttribute="centerX" secondItem="vcZ-eB-fea" secondAttribute="centerX" id="I3y-If-Ymu"/>
-                            <constraint firstItem="N7Y-G0-ddR" firstAttribute="top" secondItem="jzf-hw-M8C" secondAttribute="bottom" constant="20" id="Mes-yK-ctD"/>
-                            <constraint firstItem="N7Y-G0-ddR" firstAttribute="centerX" secondItem="vcZ-eB-fea" secondAttribute="centerX" id="P22-lV-dXR"/>
-                            <constraint firstItem="MzP-KO-uvU" firstAttribute="centerX" secondItem="vcZ-eB-fea" secondAttribute="centerX" id="akk-56-GOt"/>
-                            <constraint firstItem="yGR-de-F4H" firstAttribute="top" secondItem="MzP-KO-uvU" secondAttribute="bottom" constant="20" id="vf9-33-PBf"/>
-                            <constraint firstItem="MzP-KO-uvU" firstAttribute="top" secondItem="N7Y-G0-ddR" secondAttribute="bottom" constant="20" id="xZ0-Zj-zhW"/>
+                            <constraint firstItem="WiL-9u-Yf1" firstAttribute="top" secondItem="e6a-09-qod" secondAttribute="bottom" constant="30" id="1rD-Xl-m85"/>
+                            <constraint firstItem="Gcx-DO-dzR" firstAttribute="top" secondItem="MUn-Op-1Sd" secondAttribute="bottom" constant="45" id="Jxr-Eb-qLt"/>
+                            <constraint firstItem="MUn-Op-1Sd" firstAttribute="top" secondItem="rvX-9h-11v" secondAttribute="bottom" constant="31.5" id="S8j-Pn-ZHG"/>
+                            <constraint firstItem="MUn-Op-1Sd" firstAttribute="leading" secondItem="e6a-09-qod" secondAttribute="trailing" constant="30" id="SaN-YU-ser"/>
+                            <constraint firstItem="e6a-09-qod" firstAttribute="top" secondItem="rvX-9h-11v" secondAttribute="bottom" constant="28" id="T8w-gi-TXg"/>
+                            <constraint firstItem="rvX-9h-11v" firstAttribute="top" secondItem="ufc-sZ-I7f" secondAttribute="bottom" constant="60" id="Ywf-Hy-qEq"/>
+                            <constraint firstItem="rvX-9h-11v" firstAttribute="leading" secondItem="vcZ-eB-fea" secondAttribute="leading" constant="35" id="c4J-w0-4uL"/>
+                            <constraint firstItem="Gcx-DO-dzR" firstAttribute="leading" secondItem="WiL-9u-Yf1" secondAttribute="trailing" constant="15" id="diZ-xG-0FV"/>
+                            <constraint firstItem="WiL-9u-Yf1" firstAttribute="leading" secondItem="vcZ-eB-fea" secondAttribute="leading" constant="35" id="wva-MJ-6Pb"/>
+                            <constraint firstItem="e6a-09-qod" firstAttribute="leading" secondItem="vcZ-eB-fea" secondAttribute="leading" constant="35" id="yXy-zx-oVf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="hospitalSwitchOutlet" destination="jzf-hw-M8C" id="Mj8-d5-Qvg"/>
+                        <outlet property="mosquitoSwitchOutlet" destination="N7Y-G0-ddR" id="JZa-Sa-cAJ"/>
+                        <outlet property="userPostedSwitchOutlet" destination="MzP-KO-uvU" id="BjZ-wy-DiF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eg7-Vg-VJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3780" y="-592"/>
+            <point key="canvasLocation" x="3780" y="-592.35382308845578"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hTo-LL-RSP">
@@ -179,7 +238,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="hospitalssss" width="42" height="42"/>
         <image name="locationTarget" width="57" height="49"/>
+        <image name="mosquito" width="48" height="48"/>
         <image name="section" width="21" height="18"/>
+        <image name="userPostedSick" width="48" height="42"/>
     </resources>
 </document>

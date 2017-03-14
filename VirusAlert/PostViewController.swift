@@ -13,11 +13,8 @@ import FBSDKLoginKit
 
 class PostViewController: UIViewController {
 
-    @IBOutlet weak var logOutButton: UIButton!{
-        didSet{
-        logOutButton.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
-        }
-    }
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,8 +92,8 @@ class PostViewController: UIViewController {
         //presenting the alert
         present(alert, animated:true, completion: nil)
         
-        
     }
+    
     // present to loginPage function
     func presentLogInPage() {
         guard let controller = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}

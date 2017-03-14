@@ -36,13 +36,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
 
     
-    @IBOutlet weak var switchAnnotationHospital: UISwitch!{
-        didSet{
-            switchAnnotationHospital.addTarget(self, action: #selector(hospitalAnnotationSwitch), for: .touchUpInside)
-
-            
-        }
-    }
+//    @IBOutlet weak var switchAnnotationHospital: UISwitch!{
+//        didSet{
+//            switchAnnotationHospital.addTarget(self, action: #selector(hospitalAnnotation), for: .touchUpInside)
+//
+//            
+//        }
+//    }
     
     
     
@@ -56,6 +56,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var selectedPin : MKPlacemark? = nil
     var hospitalLocation : [Hospital] = []
     var currentLocationCoordinate : CLLocationCoordinate2D?
+
     //    var isInitialized = false
 
 
@@ -66,6 +67,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     var sideVC : ResultShowViewController!
+    var isShow = false
     
     @IBAction func openButtonTapped(_ sender: Any) {
     
@@ -75,20 +77,63 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let targetStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             if let vc = targetStoryboard.instantiateViewController(withIdentifier: "ResultShowViewController") as? ResultShowViewController {
                 sideVC = vc
+                sideVC.view.frame = CGRect.zero
             } else {
                 return
             }
+            
         }
         
-        //init secondView
-        sideVC.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: view.frame.width / 2, height: view.frame.height))
+        if isShow {
+            //dismiss
             
-        sideVC.delegate = self
+            UIView.animate(withDuration: 0.5, animations: { 
+                self.sideVC.view.frame.size = CGSize.zero
+            }, completion: { (bool) in
+                self.sideVC.removeFromParentViewController()
+                self.sideVC.view.removeFromSuperview()
+            })
+            
+            
+            
+            //mapView.frame.origin = CGPoint.zero
+            
+        } else {
+            //display
+            
+            //init secondView
+            self.view.addSubview(self.sideVC.view)
+//            self.addChildViewController(self.sideVC)
+            
+            UIView.animate(withDuration: 0.5, animations: {
+
         
-        view.addSubview(sideVC.view)
-        self.addChildViewController(sideVC)
+            self.sideVC.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width / 2, height: self.view.frame.height))
+                
+            }, completion: { (bool) in
+              
+                self.sideVC.delegate = self
+                
+                //self.view.addSubview(self.sideVC.view)
+                self.addChildViewController(self.sideVC)
+                
+                self.sideVC.didMove(toParentViewController: self)
+            })
+            
+            //mapView.frame.origin = mapView.frame.origin.applying(CGAffineTransform(translationX: view.frame.width / 2, y: 0))
+            
+            
+            
+            
+            
+            
+        }
         
-        sideVC.didMove(toParentViewController: self)
+        isShow = !isShow
+        
+        
+       
+        
         
         
         
@@ -153,17 +198,43 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
  
+    func hospitalAnnotationSwitch(show: Bool) {
+        print("@@@@4444")
+        if show {
+            print("show Hospital")
+            fetchAllHospital()
+        }else{
+            print("hide Hospital")
+            self.mapView.removeAnnotations(hospitalAnnotationArray)
+            
+            
+        }
+    }
     
     
-   func hospitalAnnotationSwitch(){
-    print("@@@444444")
-//        
-//        if switchAnnotationHospital.isOn == true {
-//            fetchAllHospital()
-//        }else{
-//            switchAnnotationHospital.tintColor = UIColor.red
-//            self.mapView.removeAnnotations(hospitalAnnotationArray)
-//        }
+    func mosquitoAnnotationSwitch(show: Bool){
+        print("@@@55555")
+        if show {
+            print("show Hospital")
+            dengueLocation()
+        }else{
+            print("hide Hospital")
+            self.mapView.removeAnnotations(dengueAnnotatonArray)
+    
+            for overl in mapView.overlays{
+                mapView.remove(overl)
+
+            }
+        }
+    }
+    
+    func userAnnotationSwitch(show : Bool){
+        print("@@@@@55555")
+        if show {
+            print("show user post")
+            
+        }
+        
     }
     
     //---------------------------------------- LOCATIONS ------------------------------------------------
