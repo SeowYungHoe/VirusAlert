@@ -11,10 +11,11 @@ import FirebaseAuth
 import MapKit
 import Firebase
 
+
 class UserPostViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var textShown: UITextView!
-    
+   
     @IBOutlet weak var postButton: UIButton!{
         didSet{
             postButton.addTarget(self, action: #selector(postCurrentLocation), for: .touchUpInside)
@@ -41,8 +42,7 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startMonitoringSignificantLocationChanges()
         locationManager.startUpdatingLocation()
-        
-        
+    
 
     }
 
@@ -66,6 +66,7 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
         ref.child("Location").child(userID).setValue(["Latitude": lat, "Longitude": long])
         print(lat)
         print(long)
+
     }
     
     //--------------------------------------------------------------------------------------

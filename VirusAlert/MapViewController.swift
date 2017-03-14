@@ -14,6 +14,7 @@ import CoreLocation
 import FirebaseAuth
 import Firebase
 
+
 protocol HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark)    
 }
@@ -60,11 +61,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var hospitalLocation : [Hospital] = []
     var currentLocationCoordinate : CLLocationCoordinate2D?
     var posts: [UserPosted] = []
-
-
-//    var dbRef : FIRDatabaseReference!
-
-    //    var isInitialized = false
 
 
   //-----------------------------------------------------------------------------------------
@@ -160,7 +156,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationManager.startUpdatingLocation()
         
         getCurrentLocation()
-        
         fetchAllHospital()
         dengueLocation()
         
@@ -186,21 +181,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //------------------------rock's end----------------------
     
         
-      
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+                fetchUserPostedDengue()
         
-//        guard let location = self.locationManager.location?.coordinate else {return}
-//            let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-//            currentLocationCoordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
-//            let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
-//            mapView.setRegion(region, animated: true)
+        self.mapView.removeAnnotations(self.userPostedAnnotationArray)
         
-
-//        if let location = self.locationManager.location?.coordinate {
-//        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-//        currentLocationCoordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
-//        let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
-//        mapView.setRegion(region, animated: true)
-//        }
+        
+fetchUserPostedDengue()
         
     }
     
@@ -256,13 +246,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-//                if !isInitialized {
-//        
-//                isInitialized = true
-        
-//        let location = self.locationManager.location!
-//        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        
         let location = locations.last
         currentLocationCoordinate = CLLocationCoordinate2DMake((location?.coordinate.latitude)!, (location?.coordinate.longitude)!)
         
@@ -285,21 +268,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.setRegion(region, animated: true)
         
     }
-    
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~UserPostLocation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//    func fethcUserPostedLocation() {
-//    dbRef.child("position").queryOrdered(byChild: "fromId").queryEqual(toValue: FIRAuth.auth()!.currentUser!.uid).observeSingleEvent(of: .value, with: {(locationSnap) in
-//    
-//    if let locationDict = locationSnap.value as? [String:AnyObject]{
-//    
-//    
-//    let lat = locationDict["latitude"] as! CLLocationDegrees
-//    let long = locationDict["latitude"] as! CLLocationDegrees
-//   
-//    
-//    }
-//    })
-//    }
     
     
     //------------------------rock's start---------------------------
@@ -338,8 +306,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         tempHospital.append(newHospital)
                         
                         self.hospitalLocation = tempHospital
-//                        dump (self.hospitalLocation)
-                        
                         
                         for hospital in self.hospitalLocation{
                             
@@ -348,12 +314,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                             hospAnnotation.title = hospital.name
                             hospAnnotation.image = "hospital48"
                             hospAnnotation.anotationType = .hospital
+                            
                             self.mapView.addAnnotation(hospAnnotation)
                             self.hospitalAnnotationArray.append(hospAnnotation)
                             
-                        
+
+                            
                         }
-                        
                     }
             
                 }
@@ -392,54 +359,50 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
 
-
-//    func filterAnnotation(){
-//        for annot in mapView.annotations {
-//            annot.
-//        }
-//    }
     
     func fetchUserPostedDengue() {
-        //        let userID: String = (FIRAuth.auth()?.currentUser?.uid)!
+
         let ref = FIRDatabase.database().reference()
         
         
         ref.child("Location").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
-            guard let value = snapshot.value as? NSDictionary else {return}
-            let Latitude = value["Latitude"] as? Double
-            let Longitude = value["Longitude"] as? Double
             
-            if let snapValues = snapshot.value as? [String : Any] {
+            
+            
+            guard let snapValues = snapshot.value as? NSDictionary else { return }
+            
+            var tempPost : [UserPosted] = []
+            for (_, value) in snapValues {
                 
-                
-                var tempPost : [UserPosted] = []
-                
-                for (key, value) in snapValues {
+                if let postDictionary = value as? [String: Any] {
                     
-                    
-                    if let postDictionary = value as? [String: Any] {
-                        
-                        let newPost = UserPosted(withDictionary: postDictionary)
-                        
-                        tempPost.append(newPost) //save it to temporary channel
-                    }
-                }
-                self.posts = tempPost
-//                dump (self.posts)
-                
-                for userPost in self.posts {
-                    
-                    let userPostedAnnotation = CustomPointAnnotation()
-                    userPostedAnnotation.coordinate = CLLocationCoordinate2DMake(userPost.latitude!, userPost.longitude!)
-                    userPostedAnnotation.image = "userPostedSick"
-                    userPostedAnnotation.anotationType = .userPosted
-                    self.mapView.addAnnotation(userPostedAnnotation)
-                    self.userPostedAnnotationArray.append(userPostedAnnotation)
-                    
-                    
-                    
+                    let newPost = UserPosted(withDictionary: postDictionary)
+                    tempPost.append(newPost) //save it to temporary channel
                 }
             }
+
+            self.posts = tempPost
+            for userPost in self.posts {
+                
+                let userPostedAnnotation = CustomPointAnnotation()
+                userPostedAnnotation.coordinate = CLLocationCoordinate2DMake(userPost.latitude!, userPost.longitude!)
+                userPostedAnnotation.image = "userPostedSick"
+                userPostedAnnotation.anotationType = .userPosted
+                self.userPostedAnnotationArray.append(userPostedAnnotation)
+                
+                self.mapView.addAnnotation(userPostedAnnotation)
+      
+
+                
+
+                
+                
+//                self.mapView.removeAnnotations(self.userPostedAnnotationArray)
+//                self.mapView.addAnnotation(userPostedAnnotation)
+
+                
+            }
+            
         })
         
     }
@@ -473,31 +436,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let dengueLoc = CLLocation(latitude: location.latitude, longitude: location.longitude)
             let loc = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
             
-//            if let location = self.locationManager.location?.coordinate{
-//            var myLocation = CLLocation(latitude: (location.latitude), longitude: location.longitude)
-//            var distanceFromDengue = myLocation.distance(from: dengueLoc)
-//            dengueAnnotation.title = "\(distanceFromDengue.roundTo(places: 2))Meter Away"
-//            }
+
             dengueAnnotation.title = "a"
             
             self.dengueAnnotationArray.append(dengueAnnotation)
             self.mapView.addAnnotation(dengueAnnotation)
             self.mapView.add(MKCircle(center: loc, radius: 150))
-            
-            
-            
-//            if let currentLocation = currentLocationCoordinate {
-//
-//                
-//                var myLocation = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
-//                var distanceFromDengue = myLocation.distance(from: dengueLoc)
-//                
-//                dengueAnnotation.title = "\(distanceFromDengue.roundTo(places: 2))Meter Away"
-//
-//                self.mapView.addAnnotation(dengueAnnotation)
-////                mapView.layer.cornerRadius = 10.0
-//                self.mapView.add(MKCircle(center: loc, radius: 150))
-//            }
             
         }
         
@@ -513,11 +457,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         case .dengue:
             
             guard let locationz = self.locationManager.location?.coordinate else {return}
-            var myLocation = CLLocation(latitude: (locationz.latitude), longitude: locationz.longitude)
-            
-            
+            let myLocation = CLLocation(latitude: (locationz.latitude), longitude: locationz.longitude)
             let dengueLoc = CLLocation(latitude: selectedAnnotation.coordinate.latitude, longitude: selectedAnnotation.coordinate.longitude)
-                var distanceFromDengue = myLocation.distance(from: dengueLoc)
+                let distanceFromDengue = myLocation.distance(from: dengueLoc)
                 print(distanceFromDengue)
                 selectedAnnotation.title = "\(distanceFromDengue.roundTo(places: 2))Meter Away"
             
@@ -530,7 +472,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     let annotationIdentifier = "aaa"
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
-        
         if !(annotation is CustomPointAnnotation) {
             return nil
         }
@@ -553,9 +494,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         annotationView?.image = UIImage(named:customPointAnnotation.image)
         
         return annotationView
-        
-
     }
+    
+
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 
@@ -570,7 +511,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    
+
     
     //------------------------------Dengue Longitude and Latitude------------------------------------
     var dengueLatAndLong = [
@@ -583,10 +524,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         Location(latitude: 3.1435, longitude: 101.615),
         Location(latitude: 3.133, longitude: 101.609),
         Location(latitude: 3.154, longitude: 101.625),
-        Location(latitude: 3.157, longitude: 101.712)
-
-        
-
+        Location(latitude: 3.157, longitude: 101.712),
+        Location(latitude: 3.073, longitude: 101.607),
+        Location(latitude: 3.153, longitude: 101.615),
+        Location(latitude: 3.178, longitude: 101.691),
+        Location(latitude: 3.185, longitude: 101.706),
+        Location(latitude: 3.153, longitude: 101.692)
 
 
     ]
@@ -632,32 +575,4 @@ extension Double {
         return (self * divisor).rounded() / divisor
     }
 }
-
-//-----------------------rock's function's end------------------------
-//extension MapViewController : UISearchControllerDelegate {
-//    func presentSearchController(_ searchController: UISearchController) {
-//
-//    }
-//}
-
-
-
-//------------------------------------------TESTING ZONE----------------------------------------------
-
-//                        for hospital in self.hospitalLocation{
-//                            let hospAnnotation = MKPointAnnotation()
-//
-//                            hospAnnotation.coordinate = CLLocationCoordinate2DMake(hospital.latitude!, hospital.longitude!)
-//
-//                            hospAnnotation.title = "\(hospital.name)"
-////                            hospAnnotation.image = "hospital"
-//
-//                            self.mapView.addAnnotation(hospAnnotation)
-//
-//
-//                        }
-
-
-
-
 

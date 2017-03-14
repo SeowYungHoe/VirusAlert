@@ -15,7 +15,7 @@ enum CustomAnotationType {
     case userPosted
 }
 
-class CustomPointAnnotation: MKPointAnnotation {
+class CustomPointAnnotation: MKPointAnnotation{
     
     var anotationType : CustomAnotationType = .dengue
     var image: String!
