@@ -29,6 +29,9 @@
                                     <constraint firstAttribute="height" constant="40" id="sde-Sv-Gty"/>
                                 </constraints>
                                 <state key="normal" title="Post"/>
+                                <connections>
+                                    <action selector="postButton:" destination="BMb-wG-BdN" eventType="touchUpInside" id="g4N-xi-3bh"/>
+                                </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3nl-tH-bZF">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="514"/>
@@ -56,7 +59,7 @@
                     </view>
                     <connections>
                         <outlet property="map" destination="3nl-tH-bZF" id="edo-0J-kRy"/>
-                        <outlet property="postButton" destination="g7i-0D-JYH" id="aHU-Zn-Kch"/>
+                        <outlet property="postButton" destination="g7i-0D-JYH" id="GXf-xA-edq"/>
                         <outlet property="textShown" destination="yG9-CG-fMI" id="2cT-GU-dZn"/>
                     </connections>
                 </viewController>

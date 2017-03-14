@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
         
         FIRef = FIRDatabase.database().reference()
         
-//        gifView.loadGif(name: "micro")
+        //gifView.loadGif(name: "dna")
         
         hideLogOutButton()
         
@@ -96,24 +96,50 @@ class LoginViewController: UIViewController {
         FIRAuth.auth()?.signIn(withEmail: userEmail.text!, password: userPassword.text!, completion: { (user, error) in
             if error != nil {
                 print(error! as NSError)
-                print("successfull log in")
+                self.failToLogInNoti()
+                print("failed to log in")
                 return
+            }else{
+                print("successfully log in")
+                self.successfullLogInNoti()
             }
             
         })
         
     }
     
-    func presentPostPage() {
-        let storyboard = UIStoryboard(name: "Statistics", bundle: Bundle.main)
+    func successfullLogInNoti() {
+        let alert = UIAlertController(title: "Log In Successfully", message: "You've Successfully Logged In", preferredStyle: .alert)
         
-        let controller = storyboard.instantiateViewController(withIdentifier: "UserPostViewController")
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
         
-        let  _ = navigationController?.popViewController(animated: false)
-        //navigationController?.pushViewController(controller, animated: true)
+        alert.addAction(okayAction)
         
-        //present(controller, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
+    
+    func failToLogInNoti(){
+        let failAlert = UIAlertController(title: "Log In Failed", message: "Please Try Again", preferredStyle: .alert)
+        
+        let okayAction1 = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        
+        failAlert.addAction(okayAction1)
+        
+        present(failAlert, animated: true, completion: nil)
+    }
+    
+    
+    
+    func successfullyLogOutNoti() {
+        let logOutAlert = UIAlertController(title: "Log Out Successfully", message: "Successfully Logged Out", preferredStyle: .alert)
+        
+        let done = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        
+        logOutAlert.addAction(done)
+        
+        present(logOutAlert, animated: true, completion: nil)
+    }
+    
     
     //this function is to display is user using facebook to log in or email to log in
     func displayUserLogInWith() {
@@ -132,7 +158,7 @@ class LoginViewController: UIViewController {
 //                    fbsdkLogin.isHidden = true
 //                    loginButton.isHidden = true
 //                    registerButton2.isHidden = true
-//                    logOutButton.isHidden = false
+                    logOutButton.isHidden = false
                 }
             }
         }
@@ -212,11 +238,15 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
     func handleLogout() {
         do {
             try FIRAuth.auth()?.signOut()
+            //past popup here to show user that hi's already logged out
+            successfullyLogOutNoti()
+            logOutButton.isHidden = true
         }catch let logoutError {
+            
             print(logoutError)
         }
         ;
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
         
     }
     

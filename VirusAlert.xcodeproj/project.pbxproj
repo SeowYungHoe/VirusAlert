@@ -26,7 +26,6 @@
 		C0BA2AF91E6E6DA60019AF35 /* GifImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BA2AF81E6E6DA60019AF35 /* GifImageExtension.swift */; };
 		C0BA2AFB1E6E6F150019AF35 /* dna.gif in Resources */ = {isa = PBXBuildFile; fileRef = C0BA2AFA1E6E6F150019AF35 /* dna.gif */; };
 		C0F0EBB51E67DC77004DCB14 /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F0EBB41E67DC77004DCB14 /* Hospital.swift */; };
-		DD0483FE1E6E6B0F005E069B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0483FD1E6E6B0F005E069B /* SWRevealViewController.m */; };
 		DD04840A1E6ECE73005E069B /* TableViewResultDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0484091E6ECE73005E069B /* TableViewResultDisplay.swift */; };
 		DD28607C1E7137DE0018AE50 /* UserPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28607B1E7137DE0018AE50 /* UserPostViewController.swift */; };
 		DD33DA3F1E7404FA00A3F7FE /* ResultShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33DA3E1E7404FA00A3F7FE /* ResultShowViewController.swift */; };
@@ -63,9 +62,6 @@
 		C0BA2AFA1E6E6F150019AF35 /* dna.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dna.gif; sourceTree = "<group>"; };
 		C0F0EBB41E67DC77004DCB14 /* Hospital.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hospital.swift; sourceTree = "<group>"; };
 		DD004F611E69536400AFB7BF /* VirusAlert.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VirusAlert.entitlements; sourceTree = "<group>"; };
-		DD0483FB1E6E6B0E005E069B /* VirusAlert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VirusAlert-Bridging-Header.h"; sourceTree = "<group>"; };
-		DD0483FC1E6E6B0F005E069B /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		DD0483FD1E6E6B0F005E069B /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		DD0484091E6ECE73005E069B /* TableViewResultDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewResultDisplay.swift; sourceTree = "<group>"; };
 		DD28607B1E7137DE0018AE50 /* UserPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostViewController.swift; sourceTree = "<group>"; };
 		DD33DA3E1E7404FA00A3F7FE /* ResultShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultShowViewController.swift; sourceTree = "<group>"; };
@@ -163,9 +159,6 @@
 				C0F0EBB41E67DC77004DCB14 /* Hospital.swift */,
 				DD0484091E6ECE73005E069B /* TableViewResultDisplay.swift */,
 				C09A13661E668C0B006B0DF4 /* Main.storyboard */,
-				DD0483FC1E6E6B0F005E069B /* SWRevealViewController.h */,
-				DD0483FD1E6E6B0F005E069B /* SWRevealViewController.m */,
-				DD0483FB1E6E6B0E005E069B /* VirusAlert-Bridging-Header.h */,
 				C09A13691E668C0B006B0DF4 /* Assets.xcassets */,
 				C09A136B1E668C0B006B0DF4 /* LaunchScreen.storyboard */,
 				C09A136E1E668C0B006B0DF4 /* Info.plist */,
@@ -357,7 +350,6 @@
 				DD28607C1E7137DE0018AE50 /* UserPostViewController.swift in Sources */,
 				DD04840A1E6ECE73005E069B /* TableViewResultDisplay.swift in Sources */,
 				C05431C11E66D32C003C7CE7 /* CustomTabBarController.swift in Sources */,
-				DD0483FE1E6E6B0F005E069B /* SWRevealViewController.m in Sources */,
 				C0BA2AF91E6E6DA60019AF35 /* GifImageExtension.swift in Sources */,
 				C0B08E131E76B03900447F88 /* UserPostedLocation.swift in Sources */,
 				DDFD926B1E66D8AB0059E0E6 /* RegisterViewController.swift in Sources */,
@@ -490,7 +482,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.crazy.VirusAlert;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "VirusAlert/VirusAlert-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -508,7 +500,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.crazy.VirusAlert;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "VirusAlert/VirusAlert-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

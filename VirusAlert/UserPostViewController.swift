@@ -85,8 +85,6 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
         //present to login page
         let loginAction = UIAlertAction(title: "Log In", style: .default) { (action) in
             
-            //code(applying the function below)
-            self.presentLogInPage()
         }
         //cancel button in UIAlertController
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
@@ -99,12 +97,13 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
         present(alert, animated:true, completion: nil)
     }
     
-    func presentLogInPage() {
-        let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
-        let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+    func presentMainMenu() {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let controller = storyboard.instantiateViewController(withIdentifier: "CustomTabBarController")
         
-        navigationController?.pushViewController(controller, animated: true)
+        navigationController?.present(controller, animated: true, completion: nil)
         }
+    
     
     func noUid() {
         let uid = FIRAuth.auth()?.currentUser?.uid
@@ -115,7 +114,7 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
             return
         }else {
             textShown.isHidden = true
-            postButton.isEnabled = true
+            //postButton.isEnabled = true
             
             return
         }
@@ -134,6 +133,10 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
         
         self.map.showsUserLocation = true
         
+    }
+    
+    func enableButton() {
+        self.postButton.isEnabled = true
     }
     
 }
