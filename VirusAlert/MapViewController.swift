@@ -194,10 +194,7 @@ fetchUserPostedDengue()
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        fetchUserPostedDengue()
-    }
+
     
  
     func hospitalAnnotationSwitch(show: Bool) {
