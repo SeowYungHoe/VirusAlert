@@ -353,7 +353,7 @@ fetchUserPostedDengue()
 //        
     
     
-    }
+//   }
     
     func open(scheme: String) {
         if let url = URL(string: scheme) {
@@ -546,6 +546,7 @@ fetchUserPostedDengue()
 
     ]
     
+
 }
 
 
