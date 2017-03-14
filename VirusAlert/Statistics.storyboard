@@ -23,15 +23,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7i-0D-JYH">
-                                <rect key="frame" x="157.5" y="564" width="60" height="40"/>
+                                <rect key="frame" x="158" y="564" width="60" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="Z7o-vq-hMH"/>
                                     <constraint firstAttribute="height" constant="40" id="sde-Sv-Gty"/>
                                 </constraints>
                                 <state key="normal" title="Post"/>
-                                <connections>
-                                    <action selector="postButton:" destination="BMb-wG-BdN" eventType="touchUpInside" id="g4N-xi-3bh"/>
-                                </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3nl-tH-bZF">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="514"/>
@@ -59,7 +56,7 @@
                     </view>
                     <connections>
                         <outlet property="map" destination="3nl-tH-bZF" id="edo-0J-kRy"/>
-                        <outlet property="postButton" destination="g7i-0D-JYH" id="GXf-xA-edq"/>
+                        <outlet property="postButton" destination="g7i-0D-JYH" id="V7J-XI-YpR"/>
                         <outlet property="textShown" destination="yG9-CG-fMI" id="2cT-GU-dZn"/>
                     </connections>
                 </viewController>

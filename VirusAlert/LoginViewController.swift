@@ -31,13 +31,13 @@ class LoginViewController: UIViewController {
             fbsdkLogin.layer.masksToBounds = true
         }
     }
-    @IBOutlet weak var loginButton: UIButton! {
+    @IBOutlet weak var loginButtonEmail: UIButton! {
         didSet {
-            loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
-            loginButton.layer.borderWidth = 1
-            loginButton.layer.cornerRadius = 5
-            loginButton.layer.masksToBounds = true
-        }
+            loginButtonEmail.addTarget(self, action: #selector(login), for: .touchUpInside)
+            loginButtonEmail.layer.borderWidth = 1
+            loginButtonEmail.layer.cornerRadius = 5
+            loginButtonEmail.layer.masksToBounds = true
+                    }
     }
     
     @IBOutlet weak var logOutButton: UIButton!{
@@ -63,21 +63,27 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /////////////hideLogOutButton()
+        
+        logOutButton.isHidden = true
+        logOutButton.isHidden = true
+       
+        
+        ////////////hideLogOutButton()
+        
         FIRef = FIRDatabase.database().reference()
         
-        //gifView.loadGif(name: "dna")
-        
-        hideLogOutButton()
-        
-        
-        
-        
+        //dismiss keyboard when tap els where
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "endKeyBoard")
-        
         view.addGestureRecognizer(tap)
+        
+        displayUserLogInWith()
+        
+        //dada()
         
     }
     
+    //displaying the toolbar black
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         var nav = self.navigationController?.navigationBar
@@ -88,8 +94,8 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        displayUserLogInWith()
-
+        //displayUserLogInWith()
+        //hideLogOutButton()
     }
     
     func login() {
@@ -102,6 +108,11 @@ class LoginViewController: UIViewController {
             }else{
                 print("successfully log in")
                 self.successfullLogInNoti()
+                self.loginButtonEmail.isHidden = true
+                self.registerButton2.isHidden = true
+                self.fbsdkLogin.isHidden = true
+                self.logOutButton.isHidden = false
+                
             }
             
         })
@@ -138,6 +149,9 @@ class LoginViewController: UIViewController {
         logOutAlert.addAction(done)
         
         present(logOutAlert, animated: true, completion: nil)
+        
+        loginButtonEmail.isHidden = false
+        registerButton2.isHidden = false
     }
     
     
@@ -148,16 +162,16 @@ class LoginViewController: UIViewController {
                 switch userInfo.providerID {
                 case "facebook.com":
                     print("user is signed in with facebook")
-//                    loginButton.isHidden = true
-//                    logOutButton.isHidden = true
-//                    registerButton2.isHidden = true
                     
+                            logOutButton.isHidden = true
+                            registerButton2.isHidden = true
+                            loginButtonEmail.isHidden = true
+
                     
                 default:
                     print("user is signed in with \(userInfo.providerID)")
-//                    fbsdkLogin.isHidden = true
-//                    loginButton.isHidden = true
-//                    registerButton2.isHidden = true
+                    
+                    fbsdkLogin.isHidden = true
                     logOutButton.isHidden = false
                 }
             }
@@ -169,6 +183,7 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
    
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         handleLogout()
+        
         print("Did log out from FB")
     }
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -176,8 +191,13 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
             print(error)
             return
         }
-       
+        
+        //try 2 hiding buttons
         showLogInFB()
+        successfullLogInNoti()
+//        logOutButton.isHidden = true
+//        registerButton2.isHidden = true
+//        loginButtonEmail.isHidden = true
     }
     
     func showLogInFB() {
@@ -197,6 +217,10 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
             }
             
             print("success logged in with user", user ?? "")
+            
+            self.loginButtonEmail.isHidden = true
+            self.registerButton2.isHidden = true
+            
             
             
         
@@ -240,13 +264,13 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
             try FIRAuth.auth()?.signOut()
             //past popup here to show user that hi's already logged out
             successfullyLogOutNoti()
+            fbsdkLogin.isHidden = false
             logOutButton.isHidden = true
+            
         }catch let logoutError {
             
             print(logoutError)
         }
-        ;
-        //self.dismiss(animated: true, completion: nil)
         
     }
     
@@ -254,13 +278,60 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
         view.endEditing(true)
     }
     
-    func hideLogOutButton(){
-        let uid = FIRAuth.auth()?.currentUser?.uid
-        
-        if uid == nil {
-            logOutButton.isHidden = true
-        }
-    }
+//    func hideLogOutButton(){
+//        
+//        let ref = FIRDatabase.database().reference()
+//        
+//        let uid = FIRAuth.auth()?.currentUser?.uid
+//        
+//        if uid != nil {
+//        
+//        ref.child("username").child(uid!).observe(.value, with: { (snapshot) in
+//            print(snapshot)
+//            
+//            guard let value = snapshot.value as? NSDictionary else {return}
+//            
+//            let id = value["id"]
+//            
+//            if  id != nil {
+//                //user loging in with fb 
+//                
+//                self.loginButtonEmail.isHidden = true
+//                self.registerButton2.isHidden = true
+//            }
+//            
+//        })
+//        }else{
+//            
+//        }
+//    }
+    
+//    func dada(){
+//        
+//        let uid = FIRAuth.auth()?.currentUser?.uid
+//
+//        if uid != nil {
+//
+//        logOutButton.isHidden = false
+//        registerButton2.isHidden = false
+//        loginButtonEmail.isHidden = false
+//    }
+//    }
 }
+
+
+        
+            //user log in
+            
+//            loginButton.isHidden = true
+//            registerButton2.isHidden = true
+//            logOutButton.isHidden = true
+//        }else{
+//            // user not log in
+//            
+//            logOutButton.isHidden = true
+//            return
+//        }
+//    }
 
 

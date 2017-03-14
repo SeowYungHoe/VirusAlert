@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -114,7 +115,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="MUn-Op-1Sd">
-                                <rect key="frame" x="113" y="139" width="49" height="143"/>
+                                <rect key="frame" x="300" y="139.5" width="49" height="143"/>
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jzf-hw-M8C">
                                         <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
@@ -137,7 +138,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-09-qod">
-                                <rect key="frame" x="35" y="135" width="48" height="150"/>
+                                <rect key="frame" x="10" y="135.5" width="48" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hospitalssss" translatesAutoresizingMaskIntoConstraints="NO" id="1kM-mZ-hnU">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
@@ -149,15 +150,18 @@
                                         <rect key="frame" x="0.0" y="102" width="48" height="48"/>
                                     </imageView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="1ke-mZ-P0W"/>
+                                </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remove Icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvX-9h-11v">
-                                <rect key="frame" x="35" y="80" width="132.5" height="27.5"/>
+                                <rect key="frame" x="35" y="80" width="133" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="WiL-9u-Yf1">
-                                <rect key="frame" x="35" y="315" width="48" height="150"/>
+                                <rect key="frame" x="10" y="316" width="48" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hospitalssss" translatesAutoresizingMaskIntoConstraints="NO" id="2Q4-Oi-zsC">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
@@ -171,23 +175,23 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="Gcx-DO-dzR">
-                                <rect key="frame" x="98" y="327" width="87" height="130"/>
+                                <rect key="frame" x="274" y="328" width="75" height="119.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospial " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgr-JJ-rRD">
-                                        <rect key="frame" x="0.0" y="0.0" width="87" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dengue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jt1-ud-CrY">
-                                        <rect key="frame" x="0.0" y="53" width="87" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="75" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Post" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8h-2W-A2E">
-                                        <rect key="frame" x="0.0" y="106" width="87" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <rect key="frame" x="0.0" y="99" width="75" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -197,15 +201,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="WiL-9u-Yf1" firstAttribute="top" secondItem="e6a-09-qod" secondAttribute="bottom" constant="30" id="1rD-Xl-m85"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rvX-9h-11v" secondAttribute="trailing" constant="191.5" id="JMP-WI-OOS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gcx-DO-dzR" secondAttribute="trailing" constant="10" id="JTc-WS-776"/>
                             <constraint firstItem="Gcx-DO-dzR" firstAttribute="top" secondItem="MUn-Op-1Sd" secondAttribute="bottom" constant="45" id="Jxr-Eb-qLt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MUn-Op-1Sd" secondAttribute="trailing" constant="10" id="LSz-9K-2EZ"/>
                             <constraint firstItem="MUn-Op-1Sd" firstAttribute="top" secondItem="rvX-9h-11v" secondAttribute="bottom" constant="31.5" id="S8j-Pn-ZHG"/>
-                            <constraint firstItem="MUn-Op-1Sd" firstAttribute="leading" secondItem="e6a-09-qod" secondAttribute="trailing" constant="30" id="SaN-YU-ser"/>
+                            <constraint firstItem="MUn-Op-1Sd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e6a-09-qod" secondAttribute="trailing" constant="10" id="SaN-YU-ser"/>
                             <constraint firstItem="e6a-09-qod" firstAttribute="top" secondItem="rvX-9h-11v" secondAttribute="bottom" constant="28" id="T8w-gi-TXg"/>
                             <constraint firstItem="rvX-9h-11v" firstAttribute="top" secondItem="ufc-sZ-I7f" secondAttribute="bottom" constant="60" id="Ywf-Hy-qEq"/>
                             <constraint firstItem="rvX-9h-11v" firstAttribute="leading" secondItem="vcZ-eB-fea" secondAttribute="leading" constant="35" id="c4J-w0-4uL"/>
-                            <constraint firstItem="Gcx-DO-dzR" firstAttribute="leading" secondItem="WiL-9u-Yf1" secondAttribute="trailing" constant="15" id="diZ-xG-0FV"/>
-                            <constraint firstItem="WiL-9u-Yf1" firstAttribute="leading" secondItem="vcZ-eB-fea" secondAttribute="leading" constant="35" id="wva-MJ-6Pb"/>
-                            <constraint firstItem="e6a-09-qod" firstAttribute="leading" secondItem="vcZ-eB-fea" secondAttribute="leading" constant="35" id="yXy-zx-oVf"/>
+                            <constraint firstItem="Gcx-DO-dzR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WiL-9u-Yf1" secondAttribute="trailing" constant="10" id="oqg-tq-aiy"/>
+                            <constraint firstItem="WiL-9u-Yf1" firstAttribute="leading" secondItem="vcZ-eB-fea" secondAttribute="leading" constant="10" id="wva-MJ-6Pb"/>
+                            <constraint firstItem="e6a-09-qod" firstAttribute="leading" secondItem="vcZ-eB-fea" secondAttribute="leading" constant="10" id="yXy-zx-oVf"/>
                         </constraints>
                     </view>
                     <connections>

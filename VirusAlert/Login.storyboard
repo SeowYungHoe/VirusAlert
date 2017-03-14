@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -137,7 +137,7 @@
                         <outlet property="fbsdkLogin" destination="5Vh-Yj-ze1" id="Czw-gX-Msj"/>
                         <outlet property="gifView" destination="Y2K-o1-fvR" id="03b-xo-xCG"/>
                         <outlet property="logOutButton" destination="Y4t-Y9-1Gc" id="WYe-u0-nUa"/>
-                        <outlet property="loginButton" destination="ZWU-V7-fCN" id="zLr-KM-Ikk"/>
+                        <outlet property="loginButtonEmail" destination="ZWU-V7-fCN" id="VFX-lW-mJf"/>
                         <outlet property="registerButton2" destination="18m-jP-KzG" id="TJZ-Dp-Nav"/>
                         <outlet property="userEmail" destination="lAI-L7-6Cx" id="oCo-2r-1Fj"/>
                         <outlet property="userPassword" destination="li4-57-6F8" id="XYj-WZ-j4u"/>
@@ -164,6 +164,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xrj-5d-SPt">
                                 <rect key="frame" x="62.5" y="380" width="250" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="X9y-4x-u6a"/>
                                     <constraint firstAttribute="height" constant="40" id="dAq-9s-GTr"/>

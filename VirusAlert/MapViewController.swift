@@ -49,7 +49,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     //---------------------------------- Constant And Variables -----------------------------
     var hospitalAnnotationArray: [MKAnnotation] = []
-    var dengueAnnotatonArray: [MKAnnotation] = []
+    var dengueAnnotationArray: [MKAnnotation] = []
+    var userPostedAnnotationArray: [MKAnnotation] = []
+
 
     var locationManager = CLLocationManager()
     //rock's
@@ -113,7 +115,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             UIView.animate(withDuration: 0.5, animations: {
 
         
-            self.sideVC.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width / 2, height: self.view.frame.height))
+            self.sideVC.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width / 1.8, height: self.view.frame.height))
                 
             }, completion: { (bool) in
               
@@ -182,7 +184,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationSearchTable.handleMapSearchDelegate = self
 
         //------------------------rock's end----------------------
-        
+    
         
       
         
@@ -200,6 +202,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        mapView.setRegion(region, animated: true)
 //        }
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fetchUserPostedDengue()
     }
     
  
@@ -224,7 +231,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             dengueLocation()
         }else{
             print("hide Hospital")
-            self.mapView.removeAnnotations(dengueAnnotatonArray)
+            self.mapView.removeAnnotations(dengueAnnotationArray)
     
             for overl in mapView.overlays{
                 mapView.remove(overl)
@@ -237,10 +244,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         print("@@@@@55555")
         if show {
             print("show user post")
-            
+            fetchUserPostedDengue()
+        }else{
+            self.mapView.removeAnnotations(userPostedAnnotationArray)
         }
         
-    }
+        }
+    
     
     //---------------------------------------- LOCATIONS ------------------------------------------------
     
@@ -258,14 +268,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         //Dengue Annotation Title Update
         self.mapView.showsUserLocation = true
-        fetchUserPostedDengue()
+        //fetchUserPostedDengue()
 
         
-//        let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
-//        mapView.setRegion(region, animated: true)
-//        locationManager.stopUpdatingLocation()
-//        dengueLocation()
-//        }
+
         
     }
     
@@ -357,6 +363,34 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             }
         }
     }
+    
+    
+    func navigateWithWaze(lat : CGFloat, lon : CGFloat){
+        guard let wazeUrl = URL(string: "waze://")
+            else { return}
+        
+        if UIApplication.shared.canOpenURL(wazeUrl){
+            let url = "waze://?ll=\(lat),\(lon)&navigate=yes"
+            open(scheme: url)
+        }else{
+            open(scheme: "http://itunes.apple.com/us/app/id323229106")
+        }
+        
+        
+    }
+    
+    func open(scheme: String) {
+        if let url = URL(string: scheme) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: {
+                    (success) in
+                    print("Open \(scheme): \(success)")
+                })
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    }
 
 
 //    func filterAnnotation(){
@@ -400,6 +434,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     userPostedAnnotation.image = "userPostedSick"
                     userPostedAnnotation.anotationType = .userPosted
                     self.mapView.addAnnotation(userPostedAnnotation)
+                    self.userPostedAnnotationArray.append(userPostedAnnotation)
+                    
+                    
                     
                 }
             }
@@ -443,7 +480,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //            }
             dengueAnnotation.title = "a"
             
-            self.dengueAnnotatonArray.append(dengueAnnotation)
+            self.dengueAnnotationArray.append(dengueAnnotation)
             self.mapView.addAnnotation(dengueAnnotation)
             self.mapView.add(MKCircle(center: loc, radius: 150))
             

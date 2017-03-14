@@ -46,8 +46,14 @@ class ResultShowViewController: UIViewController{
     
     @IBAction func userPostSwitch(_ sender: Any) {
         print("@@@33333")
-        //delegate?.hospitalAnnotationSwitch()
-        userPostedSwitchOutlet.tintColor = UIColor.red
+        
+        if let switchButton2 = sender as? UISwitch{
+            
+        
+        delegate?.userAnnotationSwitch(show: switchButton2.isOn)
+            userPostedSwitchOutlet.tintColor = UIColor.red
+            
+        }
     }
    
     @IBAction func closeButton(_ sender: Any) {

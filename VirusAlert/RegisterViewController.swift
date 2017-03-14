@@ -28,7 +28,7 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gifView.loadGif(name: "dna")
+        //gifView.loadGif(name: "dna")
         
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "endKeyBoard")
         
