@@ -9,16 +9,27 @@
 import UIKit
 import FirebaseAuth
 import MapKit
+import Firebase
 
 class UserPostViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var textShown: UITextView!
-    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var postButton: UIButton!{
+        didSet{
+            postButton.addTarget(self, action: #selector(postCurrentLocation), for: .touchUpInside)
+            
+            
+        }
+    }
     @IBOutlet weak var map: MKMapView!
     
+    //---------------------------Constant and Variables----------------------------------
+    let ref = FIRDatabase.database().reference()
+    let locationManager = CLLocationManager()
+
+
     //----------------properties-----------------
     
-    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +52,16 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
     
     //---------------------------PostCurrentLocationToFirebase----------------------------
   
+    func postCurrentLocation() {
+        
+        let userID: String = (FIRAuth.auth()?.currentUser?.uid)!
+        let lat: Double = (locationManager.location?.coordinate.latitude)!
+        let long: Double = (locationManager.location?.coordinate.longitude)!
+        
+        ref.child("Location").child(userID).setValue(["Latitude": lat, "Longitude": long])
+        print(lat)
+        print(long)
+    }
     
     //--------------------------------------------------------------------------------------
     
@@ -100,6 +121,7 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
         
@@ -108,7 +130,7 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         map.setRegion(region, animated: true)
         
-        print(location.coordinate)
+//        print(location.coordinate)
         
         self.map.showsUserLocation = true
         

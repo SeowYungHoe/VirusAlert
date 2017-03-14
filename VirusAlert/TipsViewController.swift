@@ -197,7 +197,7 @@ class TipsViewController: UIViewController {
         allboxClickedFalse()
         view.backgroundColor = UIColor.white
         resultLabel.isHidden = true
-        labelChangedColor()
+//        labelChangedColor()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "GradientBlue")!)
 
         
@@ -222,17 +222,15 @@ class TipsViewController: UIViewController {
 
     }
     
-    func labelChangedColor(){
-//        
-//        if count = 1..3 {
+//    func labelChangedColor(){
+//
+//        if aa = count {
 //            resultLabel.textColor = UIColor.green
 //        }else {
 //            resultLabel.textColor = UIColor.red
 //            
 //        }
-
-        
-    }
+//    }
 
 }
 

@@ -12,6 +12,7 @@ import MapKit
 enum CustomAnotationType {
     case hospital
     case dengue
+    case userPosted
 }
 
 class CustomPointAnnotation: MKPointAnnotation {

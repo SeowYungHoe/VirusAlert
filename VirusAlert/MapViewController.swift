@@ -12,6 +12,7 @@ import Alamofire
 import SwiftyJSON
 import CoreLocation
 import FirebaseAuth
+import Firebase
 
 protocol HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark)    
@@ -56,6 +57,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var selectedPin : MKPlacemark? = nil
     var hospitalLocation : [Hospital] = []
     var currentLocationCoordinate : CLLocationCoordinate2D?
+    var posts: [UserPosted] = []
+
+
+//    var dbRef : FIRDatabaseReference!
+
     //    var isInitialized = false
 
 
@@ -73,12 +79,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.delegate = self
         mapView.showsUserLocation = true
         
-        getCurrentLocation()
-        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        getCurrentLocation()
         
         fetchAllHospital()
         dengueLocation()
@@ -137,7 +143,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     //---------------------------------------- LOCATIONS ------------------------------------------------
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
 //                if !isInitialized {
@@ -147,12 +153,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        let location = self.locationManager.location!
 //        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         
-        
         let location = locations.last
         currentLocationCoordinate = CLLocationCoordinate2DMake((location?.coordinate.latitude)!, (location?.coordinate.longitude)!)
         
         //Dengue Annotation Title Update
         self.mapView.showsUserLocation = true
+        fetchUserPostedDengue()
+
         
 //        let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
 //        mapView.setRegion(region, animated: true)
@@ -165,18 +172,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func getCurrentLocation(){
         
-        if let location = self.locationManager.location?.coordinate{
+        guard let location = self.locationManager.location?.coordinate else {return}
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         currentLocationCoordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
         let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
         mapView.setRegion(region, animated: true)
-        }
+        
     }
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~UserPostLocation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//    func fethcUserPostedLocation() {
+//    dbRef.child("position").queryOrdered(byChild: "fromId").queryEqual(toValue: FIRAuth.auth()!.currentUser!.uid).observeSingleEvent(of: .value, with: {(locationSnap) in
+//    
+//    if let locationDict = locationSnap.value as? [String:AnyObject]{
+//    
+//    
+//    let lat = locationDict["latitude"] as! CLLocationDegrees
+//    let long = locationDict["latitude"] as! CLLocationDegrees
+//   
+//    
+//    }
+//    })
+//    }
+    
     
     //------------------------rock's start---------------------------
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse{
             locationManager.requestLocation()
+            getCurrentLocation()
         }
     }
     
@@ -208,7 +232,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         tempHospital.append(newHospital)
                         
                         self.hospitalLocation = tempHospital
-                        dump (self.hospitalLocation)
+//                        dump (self.hospitalLocation)
                         
                         
                         for hospital in self.hospitalLocation{
@@ -216,10 +240,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                             let hospAnnotation = CustomPointAnnotation()
                             hospAnnotation.coordinate = CLLocationCoordinate2DMake(hospital.latitude!, hospital.longitude!)
                             hospAnnotation.title = hospital.name
-                            hospAnnotation.image = "hospital"
+                            hospAnnotation.image = "hospital48"
                             hospAnnotation.anotationType = .hospital
                             self.mapView.addAnnotation(hospAnnotation)
                             self.hospitalAnnotationArray.append(hospAnnotation)
+                            
                         
                         }
                         
@@ -239,6 +264,48 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //            annot.
 //        }
 //    }
+    
+    func fetchUserPostedDengue() {
+        //        let userID: String = (FIRAuth.auth()?.currentUser?.uid)!
+        let ref = FIRDatabase.database().reference()
+        
+        
+        ref.child("Location").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
+            guard let value = snapshot.value as? NSDictionary else {return}
+            let Latitude = value["Latitude"] as? Double
+            let Longitude = value["Longitude"] as? Double
+            
+            if let snapValues = snapshot.value as? [String : Any] {
+                
+                
+                var tempPost : [UserPosted] = []
+                
+                for (key, value) in snapValues {
+                    
+                    
+                    if let postDictionary = value as? [String: Any] {
+                        
+                        let newPost = UserPosted(withDictionary: postDictionary)
+                        
+                        tempPost.append(newPost) //save it to temporary channel
+                    }
+                }
+                self.posts = tempPost
+//                dump (self.posts)
+                
+                for userPost in self.posts {
+                    
+                    let userPostedAnnotation = CustomPointAnnotation()
+                    userPostedAnnotation.coordinate = CLLocationCoordinate2DMake(userPost.latitude!, userPost.longitude!)
+                    userPostedAnnotation.image = "userPostedSick"
+                    userPostedAnnotation.anotationType = .userPosted
+                    self.mapView.addAnnotation(userPostedAnnotation)
+                    
+                }
+            }
+        })
+        
+    }
     
     
     
@@ -300,7 +367,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
+    
         guard let selectedAnnotation =  view.annotation as? CustomPointAnnotation else {
             return
         }
@@ -378,7 +445,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         Location(latitude: 3.1333, longitude: 101.619),
         Location(latitude: 3.1435, longitude: 101.615),
         Location(latitude: 3.133, longitude: 101.609),
-        Location(latitude: 3.154, longitude: 101.625)
+        Location(latitude: 3.154, longitude: 101.625),
+        Location(latitude: 3.157, longitude: 101.712)
+
         
 
 
