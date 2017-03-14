@@ -314,12 +314,8 @@ fetchUserPostedDengue()
                             
                             self.mapView.addAnnotation(hospAnnotation)
                             self.hospitalAnnotationArray.append(hospAnnotation)
-                            
-
-                            
                         }
                     }
-            
                 }
             
             case .failure(let error):
@@ -328,19 +324,35 @@ fetchUserPostedDengue()
         }
     }
     
+    //waze function
+//    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+//        
+//        if let annot = view.annotation {
+//            navigateWithWaze(lat: annot.coordinate.latitude, lon: annot.coordinate.longitude)
+//        }
+//        
+//       
+//    }
     
-    func navigateWithWaze(lat : CGFloat, lon : CGFloat){
-        guard let wazeUrl = URL(string: "waze://")
-            else { return}
-        
-        if UIApplication.shared.canOpenURL(wazeUrl){
-            let url = "waze://?ll=\(lat),\(lon)&navigate=yes"
-            open(scheme: url)
-        }else{
-            open(scheme: "http://itunes.apple.com/us/app/id323229106")
-        }
-        
-        
+    
+    
+
+    
+    
+//    func navigateWithWaze(lat : Double, lon : Double){
+//
+//        let url = "waze://?ll=\(lat),\(lon)&navigate=yes"
+//        open(scheme: url)
+//        
+//        if UIApplication.shared.canOpenURL(wazeUrl){
+//            
+//            open(scheme: url)
+//        }else{
+//            open(scheme: "https://itunes.apple.com/us/app/id323229106")
+//        }
+//        
+    
+    
     }
     
     func open(scheme: String) {
@@ -479,6 +491,9 @@ fetchUserPostedDengue()
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             annotationView?.canShowCallout = true
+            
+            //callout button
+            annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
         else {
             annotationView?.annotation = annotation
