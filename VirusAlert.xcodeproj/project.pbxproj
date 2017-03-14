@@ -21,6 +21,7 @@
 		C09A13681E668C0B006B0DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09A13661E668C0B006B0DF4 /* Main.storyboard */; };
 		C09A136A1E668C0B006B0DF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C09A13691E668C0B006B0DF4 /* Assets.xcassets */; };
 		C09A136D1E668C0B006B0DF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09A136B1E668C0B006B0DF4 /* LaunchScreen.storyboard */; };
+		C0A5648C1E784EF000853566 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0A5648B1E784EF000853566 /* GoogleService-Info.plist */; };
 		C0B08E131E76B03900447F88 /* UserPostedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B08E121E76B03900447F88 /* UserPostedLocation.swift */; };
 		C0BA2AF91E6E6DA60019AF35 /* GifImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BA2AF81E6E6DA60019AF35 /* GifImageExtension.swift */; };
 		C0BA2AFB1E6E6F150019AF35 /* dna.gif in Resources */ = {isa = PBXBuildFile; fileRef = C0BA2AFA1E6E6F150019AF35 /* dna.gif */; };
@@ -28,7 +29,6 @@
 		DD04840A1E6ECE73005E069B /* TableViewResultDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0484091E6ECE73005E069B /* TableViewResultDisplay.swift */; };
 		DD28607C1E7137DE0018AE50 /* UserPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28607B1E7137DE0018AE50 /* UserPostViewController.swift */; };
 		DD33DA3F1E7404FA00A3F7FE /* ResultShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33DA3E1E7404FA00A3F7FE /* ResultShowViewController.swift */; };
-		DDFD92631E669CA50059E0E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */; };
 		DDFD92671E66D8050059E0E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD92661E66D8050059E0E6 /* LoginViewController.swift */; };
 		DDFD92691E66D82F0059E0E6 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDFD92681E66D82F0059E0E6 /* Login.storyboard */; };
 		DDFD926B1E66D8AB0059E0E6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFD926A1E66D8AB0059E0E6 /* RegisterViewController.swift */; };
@@ -53,6 +53,7 @@
 		C09A13691E668C0B006B0DF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C09A136C1E668C0B006B0DF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C09A136E1E668C0B006B0DF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0A5648B1E784EF000853566 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0B08E121E76B03900447F88 /* UserPostedLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostedLocation.swift; sourceTree = "<group>"; };
 		C0BA2AF81E6E6DA60019AF35 /* GifImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifImageExtension.swift; sourceTree = "<group>"; };
 		C0BA2AFA1E6E6F150019AF35 /* dna.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dna.gif; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		DD0484091E6ECE73005E069B /* TableViewResultDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewResultDisplay.swift; sourceTree = "<group>"; };
 		DD28607B1E7137DE0018AE50 /* UserPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostViewController.swift; sourceTree = "<group>"; };
 		DD33DA3E1E7404FA00A3F7FE /* ResultShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultShowViewController.swift; sourceTree = "<group>"; };
-		DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDFD92661E66D8050059E0E6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DDFD92681E66D82F0059E0E6 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DDFD926A1E66D8AB0059E0E6 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 				C09A13691E668C0B006B0DF4 /* Assets.xcassets */,
 				C09A136B1E668C0B006B0DF4 /* LaunchScreen.storyboard */,
 				C09A136E1E668C0B006B0DF4 /* Info.plist */,
-				DDFD92621E669CA50059E0E6 /* GoogleService-Info.plist */,
+				C0A5648B1E784EF000853566 /* GoogleService-Info.plist */,
 				C05431C61E66E382003C7CE7 /* Tips - Symptons/Prevention */,
 				DDFD92651E66A29C0059E0E6 /* Rock */,
 				DDFD92641E66A2920059E0E6 /* YungHoe */,
@@ -263,8 +263,8 @@
 			files = (
 				C0BA2AFB1E6E6F150019AF35 /* dna.gif in Resources */,
 				C05431C31E66E2DA003C7CE7 /* Tips.storyboard in Resources */,
+				C0A5648C1E784EF000853566 /* GoogleService-Info.plist in Resources */,
 				C09A136D1E668C0B006B0DF4 /* LaunchScreen.storyboard in Resources */,
-				DDFD92631E669CA50059E0E6 /* GoogleService-Info.plist in Resources */,
 				DDFD92691E66D82F0059E0E6 /* Login.storyboard in Resources */,
 				C09435C71E66A13F00E2F88E /* Auth.storyboard in Resources */,
 				C09A136A1E668C0B006B0DF4 /* Assets.xcassets in Resources */,
@@ -468,7 +468,7 @@
 				DEVELOPMENT_TEAM = ZQ547JDPVM;
 				INFOPLIST_FILE = VirusAlert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.crazy.VirusAlert;
+				PRODUCT_BUNDLE_IDENTIFIER = com.crazy.VirusAlertz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -486,7 +486,7 @@
 				DEVELOPMENT_TEAM = ZQ547JDPVM;
 				INFOPLIST_FILE = VirusAlert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.crazy.VirusAlert;
+				PRODUCT_BUNDLE_IDENTIFIER = com.crazy.VirusAlertz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
