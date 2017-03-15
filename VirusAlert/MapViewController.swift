@@ -250,7 +250,6 @@ fetchUserPostedDengue()
         self.mapView.showsUserLocation = true
         //fetchUserPostedDengue()
 
-        
 
         
     }
@@ -551,6 +550,7 @@ fetchUserPostedDengue()
     
     //------------------------------Dengue Longitude and Latitude------------------------------------
     var dengueLatAndLong = [
+        
         Location(latitude: 3.135, longitude: 101.63),
         Location(latitude: 3.145733, longitude: 101.688906),
         Location(latitude: 3.1308, longitude: 101.627),
@@ -565,7 +565,18 @@ fetchUserPostedDengue()
         Location(latitude: 3.153, longitude: 101.615),
         Location(latitude: 3.178, longitude: 101.691),
         Location(latitude: 3.185, longitude: 101.706),
-        Location(latitude: 3.153, longitude: 101.692)
+        Location(latitude: 3.153, longitude: 101.692),
+        Location(latitude: 2.993, longitude: 101.786),
+        Location(latitude: 3.196, longitude: 101.731),
+        Location(latitude: 3.206, longitude: 101.641),
+        Location(latitude: 3.058, longitude: 101.690),
+        Location(latitude: 3.117, longitude: 101.678),
+        Location(latitude: 3.093, longitude: 101.626)
+
+
+
+        
+
 
 
     ]

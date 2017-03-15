@@ -171,6 +171,8 @@ class LoginViewController: UIViewController {
                 default:
                     print("user is signed in with \(userInfo.providerID)")
                     
+                    registerButton2.isHidden = true
+                    loginButtonEmail.isHidden = true
                     fbsdkLogin.isHidden = true
                     logOutButton.isHidden = false
                 }
