@@ -325,45 +325,73 @@ fetchUserPostedDengue()
     }
     
     //waze function
-//    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-//        
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
 //        if let annot = view.annotation {
 //            navigateWithWaze(lat: annot.coordinate.latitude, lon: annot.coordinate.longitude)
 //        }
-//        
-//       
-//    }
+        
+        
+        guard let annott =  view.annotation as? CustomPointAnnotation else {
+            return
+        }
+        
+        switch annott.anotationType {
+        case .hospital:
+            
+            if let annot = view.annotation {
+                navigateWithWaze(lat: annot.coordinate.latitude, lon: annot.coordinate.longitude)
+            }
+            
+        default:
+            break
+        }
+        
+       
+    }
     
     
     
 
     
     
-//    func navigateWithWaze(lat : Double, lon : Double){
-//
-//        let url = "waze://?ll=\(lat),\(lon)&navigate=yes"
-//        open(scheme: url)
-//        
-//        if UIApplication.shared.canOpenURL(wazeUrl){
-//            
-//            open(scheme: url)
-//        }else{
-//            open(scheme: "https://itunes.apple.com/us/app/id323229106")
-//        }
-//        
-    
-    
+    func navigateWithWaze(lat : Double, lon : Double){
+
+        let url = "waze://?ll=\(lat),\(lon)&navigate=yes"
+        open(scheme: url)
+        
+        let wazeURL = NSURL(string: "waze://")
+        
+        if UIApplication.shared.canOpenURL(wazeURL as! URL){
+            
+            open(scheme: url)
+        }else{
+            open(scheme: "https://itunes.apple.com/us/app/id323229106")
+        }
     }
     
-    func open(scheme: String) {
+    
+    
+//if there's waze they'll open waze if no waze will go to appstore.
+    
+    func open(scheme: String, otherSchemeIfFail secondScheme: String? = nil) {
         if let url = URL(string: scheme) {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: {
                     (success) in
-                    print("Open \(scheme): \(success)")
+                    if !success,
+                        let secondUrl = secondScheme {
+                        self.open(scheme: secondUrl)
+                    }
                 })
             } else {
                 // Fallback on earlier versions
+                let success = UIApplication.shared.openURL(url)
+                if !success,
+                    let secondUrl = secondScheme
+                {
+                    open(scheme: secondUrl)
+                }
             }
         }
     }
@@ -375,7 +403,6 @@ fetchUserPostedDengue()
         
         
         ref.child("Location").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
-            
             
             
             guard let snapValues = snapshot.value as? NSDictionary else { return }
@@ -402,10 +429,6 @@ fetchUserPostedDengue()
                 self.mapView.addAnnotation(userPostedAnnotation)
       
 
-                
-
-                
-                
 //                self.mapView.removeAnnotations(self.userPostedAnnotationArray)
 //                self.mapView.addAnnotation(userPostedAnnotation)
 

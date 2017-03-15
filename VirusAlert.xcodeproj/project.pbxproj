@@ -468,7 +468,7 @@
 				DEVELOPMENT_TEAM = ZQ547JDPVM;
 				INFOPLIST_FILE = VirusAlert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.crazy.VirusAlert;
+				PRODUCT_BUNDLE_IDENTIFIER = com.crazy.VirusAlertz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -486,7 +486,7 @@
 				DEVELOPMENT_TEAM = ZQ547JDPVM;
 				INFOPLIST_FILE = VirusAlert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.crazy.VirusAlert;
+				PRODUCT_BUNDLE_IDENTIFIER = com.crazy.VirusAlertz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
