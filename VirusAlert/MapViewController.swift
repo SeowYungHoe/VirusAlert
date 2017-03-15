@@ -358,16 +358,8 @@ fetchUserPostedDengue()
     func navigateWithWaze(lat : Double, lon : Double){
 
         let url = "waze://?ll=\(lat),\(lon)&navigate=yes"
-        open(scheme: url)
-        
-        let wazeURL = NSURL(string: "waze://")
-        
-        if UIApplication.shared.canOpenURL(wazeURL as! URL){
-            
-            open(scheme: url)
-        }else{
-            open(scheme: "https://itunes.apple.com/us/app/id323229106")
-        }
+        let url2 = "https://itunes.apple.com/us/app/id323229106"
+        open(scheme: url, otherSchemeIfFail: url2)
     }
     
     
@@ -504,7 +496,8 @@ fetchUserPostedDengue()
     
     let annotationIdentifier = "aaa"
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
-        if !(annotation is CustomPointAnnotation) {
+        guard let annotation = annotation as? CustomPointAnnotation
+        else {
             return nil
         }
         
@@ -516,7 +509,11 @@ fetchUserPostedDengue()
             annotationView?.canShowCallout = true
             
             //callout button
-            annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            if annotation.anotationType == .hospital {
+                annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            }else {
+                annotationView?.rightCalloutAccessoryView = nil
+            }
         }
         else {
             annotationView?.annotation = annotation
