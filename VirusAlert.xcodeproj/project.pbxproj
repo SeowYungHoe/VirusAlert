@@ -98,7 +98,6 @@
 			children = (
 				C05431C21E66E2DA003C7CE7 /* Tips.storyboard */,
 				C05431C41E66E37D003C7CE7 /* TipsViewController.swift */,
-				C05431CB1E67C05A003C7CE7 /* Statistics */,
 			);
 			name = "Tips - Symptons/Prevention";
 			sourceTree = "<group>";
@@ -157,6 +156,7 @@
 				C09A136E1E668C0B006B0DF4 /* Info.plist */,
 				C0A5648B1E784EF000853566 /* GoogleService-Info.plist */,
 				C05431C61E66E382003C7CE7 /* Tips - Symptons/Prevention */,
+				C05431CB1E67C05A003C7CE7 /* Statistics */,
 				DDFD92651E66A29C0059E0E6 /* Rock */,
 				DDFD92641E66A2920059E0E6 /* YungHoe */,
 			);

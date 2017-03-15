@@ -218,8 +218,8 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
             
             print("success logged in with user", user ?? "")
             
-            self.loginButtonEmail.isHidden = true
-            self.registerButton2.isHidden = true
+//            self.loginButtonEmail.isHidden = true
+//            self.registerButton2.isHidden = true
             
             
             

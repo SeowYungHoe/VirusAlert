@@ -54,7 +54,7 @@ class RegisterViewController: UIViewController {
             
             let ref = FIRDatabase.database().reference()
             let values = ["username": username, "email": email]
-            
+            self.succesfullSignUp()
             ref.child("user").child(user!.uid).updateChildValues(values, withCompletionBlock: { (error, ref) in
                 if error != nil {
                     print("err")
@@ -82,6 +82,14 @@ class RegisterViewController: UIViewController {
    
         
         //presenting the alert
+        present(alert, animated:true, completion: nil)
+    }
+    
+    func succesfullSignUp(){
+        
+        let alert = UIAlertController(title: "Successlly Signup", message: "You've successfully sign up your account", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Okay", style: .default)
+        alert.addAction(okAction)
         present(alert, animated:true, completion: nil)
     }
     

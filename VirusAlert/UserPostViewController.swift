@@ -27,6 +27,8 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
     //---------------------------Constant and Variables----------------------------------
     let ref = FIRDatabase.database().reference()
     let locationManager = CLLocationManager()
+    var currentLocationCoordinate : CLLocationCoordinate2D?
+
 
 
     //----------------properties-----------------
@@ -42,15 +44,17 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startMonitoringSignificantLocationChanges()
         locationManager.startUpdatingLocation()
-    
-
+        map.showsUserLocation = true
+        getCurrentLocation()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        textShown.isHidden = true
+        textShown.isHidden = false
         postButton.isEnabled = false
+        
+        
         noUid()
     }
     
@@ -67,6 +71,17 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
         print(lat)
         print(long)
 
+    }
+    
+    //---------------------------Location---------------------------------
+    func getCurrentLocation(){
+        
+        guard let location = self.locationManager.location?.coordinate else {return}
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        currentLocationCoordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(currentLocationCoordinate!, span)
+        map.setRegion(region, animated: true)
+        
     }
     
     //--------------------------------------------------------------------------------------
@@ -136,8 +151,8 @@ class UserPostViewController: UIViewController, CLLocationManagerDelegate {
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
         
+        let location = locations[0]
         let span : MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         let myLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
