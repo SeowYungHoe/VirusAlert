@@ -94,7 +94,7 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //displayUserLogInWith()
+//        displayUserLogInWith()
         //hideLogOutButton()
     }
     
@@ -197,9 +197,9 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
         //try 2 hiding buttons
         showLogInFB()
         successfullLogInNoti()
-//        logOutButton.isHidden = true
-//        registerButton2.isHidden = true
-//        loginButtonEmail.isHidden = true
+        logOutButton.isHidden = true
+        registerButton2.isHidden = true
+        loginButtonEmail.isHidden = true
     }
     
     func showLogInFB() {

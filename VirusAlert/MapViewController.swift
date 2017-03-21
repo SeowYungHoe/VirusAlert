@@ -158,6 +158,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         getCurrentLocation()
         fetchAllHospital()
         dengueLocation()
+//        fetchUserPostedDengue()
+
         
         //----------------------rock's start-----------------------
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "TableViewResultDisplay") as! TableViewResultDisplay
@@ -185,12 +187,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-                fetchUserPostedDengue()
+        fetchUserPostedDengue()
         
         self.mapView.removeAnnotations(self.userPostedAnnotationArray)
         
         
-fetchUserPostedDengue()
+        fetchUserPostedDengue()
+        
+//        if sideVC != nil {
+//            let show = sideVC.userPostedSwitchOutlet.isOn
+//            userAnnotationSwitch(show: show)
+//        }
+//        
         
     }
     
@@ -198,7 +206,6 @@ fetchUserPostedDengue()
     
  
     func hospitalAnnotationSwitch(show: Bool) {
-        print("@@@@4444")
         if show {
             print("show Hospital")
             fetchAllHospital()
@@ -212,7 +219,6 @@ fetchUserPostedDengue()
     
     
     func mosquitoAnnotationSwitch(show: Bool){
-        print("@@@55555")
         if show {
             print("show Hospital")
             dengueLocation()
@@ -228,7 +234,6 @@ fetchUserPostedDengue()
     }
     
     func userAnnotationSwitch(show : Bool){
-        print("@@@@@55555")
         if show {
             print("show user post")
             fetchUserPostedDengue()
@@ -354,7 +359,14 @@ fetchUserPostedDengue()
                 userPostedAnnotation.anotationType = .userPosted
                 self.userPostedAnnotationArray.append(userPostedAnnotation)
                 
-                self.mapView.addAnnotation(userPostedAnnotation)
+                 self.mapView.addAnnotation(userPostedAnnotation)
+                
+                if self.sideVC != nil {
+                    if !self.sideVC.userPostedSwitchOutlet.isOn {
+                        self.userAnnotationSwitch(show: false)
+                    }
+                }
+                
       
 
 //                self.mapView.removeAnnotations(self.userPostedAnnotationArray)

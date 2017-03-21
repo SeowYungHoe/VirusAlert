@@ -24,7 +24,6 @@ class ResultShowViewController: UIViewController{
     
     
     @IBAction func hospitalSwitch(_ sender: Any) {
-        print("@@@1111")
         if let switchButton = sender as? UISwitch {
             
             delegate?.hospitalAnnotationSwitch(show : switchButton.isOn)
@@ -35,7 +34,6 @@ class ResultShowViewController: UIViewController{
     }
     
     @IBAction func mosquitoSwitch(_ sender: Any) {
-        print("@@@22222")
         if let switchButton1 = sender as? UISwitch {
             
             delegate?.mosquitoAnnotationSwitch(show: switchButton1.isOn)
@@ -45,8 +43,6 @@ class ResultShowViewController: UIViewController{
     }
     
     @IBAction func userPostSwitch(_ sender: Any) {
-        print("@@@33333")
-        
         if let switchButton2 = sender as? UISwitch{
             
         
